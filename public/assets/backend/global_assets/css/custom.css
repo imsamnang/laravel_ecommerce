@@ -1,0 +1,53 @@
+body, table, input, textarea, select, li, button {
+    font-family: battambang,trebuchet ms,comic sans ms,Helvetica,Arial,Sans-Serif;
+    font-size: 12px;
+    line-height: normal;
+    color: #333;
+}
+
+.the-legend {
+    border-style: none;
+    border-width: 0;
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 0;
+    width: auto;
+    padding: 5px 10px 5px 10px !important;
+    border: 1px solid #e0e0e0;
+}
+.the-fieldset {
+    border: 1px solid #e0e0e0;
+    padding: 10px;
+}
+
+img{
+  max-width:180px;
+}
+input[type=file]{
+padding:10px;
+background:#2d2d2d;}
+
+.links-list {
+    white-space: nowrap;
+    padding-top: 14px;
+    padding-bottom: 8px;
+}
+
+.pull-right {
+    float: right !important;
+}
+.list-inline {
+    padding-left: 0;
+    list-style: none;
+    margin-left: -5px;
+}
+ul, ol {
+    margin-top: 0;
+    margin-bottom: 8.5px;
+}
+.mylabel{
+    margin-top:5px;
+}
+.img-flag{
+    height: 24px;
+}
