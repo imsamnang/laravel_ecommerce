@@ -59,8 +59,8 @@
 				<li class="nav-item nav-item-submenu">
 					<a href="#" class="nav-link"><i class="icon-tree5"></i> <span>{{__('admin.products')}}</span></a>
 					<ul class="nav nav-group-sub" data-submenu-title="Menu levels">
-						<li class="nav-item"><a href="#" class="nav-link"><i class="icon-IE"></i> {{__('admin.products.index')}}</a></li>
-						<li class="nav-item"><a href="#" class="nav-link"><i class="icon-chrome"></i> {{__('backend.manage.student.student_list')}}</a></li>
+						<li class="nav-item"><a href="{{ route('product.create') }}" class="nav-link"><i class="icon-IE"></i> {{__('admin.products.create')}}</a></li>
+						<li class="nav-item"><a href="{{ route('product.index') }}" class="nav-link"><i class="icon-chrome"></i> {{__('admin.products.index')}}</a></li>
 					</ul>
 				</li>
 				{{-- language translations --}}

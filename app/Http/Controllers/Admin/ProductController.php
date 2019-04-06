@@ -3,28 +3,29 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests;
 use App\Model\Category;
+use App\Model\Product;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class ProductController extends Controller
 {
-
   public function index(Request $request)
   {
     $keyword = $request->get('search');
     $perPage = 15;
     if (!empty($keyword)) {
-        $category = Category::where('category_name', 'LIKE', "%$keyword%")
+        $products = Product::where('category_name', 'LIKE', "%$keyword%")
             ->orWhere('category_level', 'LIKE', "%$keyword%")
             ->orWhere('description', 'LIKE', "%$keyword%")
             ->orWhere('image', 'LIKE', "%$keyword%")
             ->orWhere('is_active', 'LIKE', "%$keyword%")
             ->latest()->paginate($perPage);
     } else {
-      $category = Category::latest()->paginate($perPage);
+      // $category = Category::latest()->paginate($perPage);
+      $products = Product::with(['category'])->orderBy('id','desc')->paginate($perPage);
     }
-    return view('admins.categories.index', compact('category'));
+
+    return view('admins.products.index',compact('products'));
   }
 
   public function create()
@@ -37,30 +38,33 @@ class CategoryController extends Controller
       foreach ($sub_categories as $sub_cat) {
         $category_dropdown.="<option value='".$sub_cat->id."'>&nbsp;--&nbsp;".$sub_cat->category_name."</option>";
       }
-    }
-    return view('admins.categories.create',compact('category_dropdown'));
+    }    
+    // $categories = Category::pluck('category_name','id');
+    return view('admins.products.create',compact('category_dropdown'));
   }
 
   public function store(Request $request)
-  {      
-    $requestData = $request->all();
-      if ($request->hasFile('image')) {
-        $requestData['image'] = $request->file('image')
-            ->store('uploads', 'public');
+  {
+    $product = new Product();
+    $product->category_id = $request->category_id;
+    $product->product_name = $request->product_name;
+    $product->qty = $request->qty;
+    $product->price = $request->price;
+    $product->is_active = $request->is_active;
+    $product->description = $request->description;
+    $product->imageUpload('image',$product,'product');
+    if($product->save()){
+      return redirect()->route('product.index');
     }
-    Category::create($requestData);
-    return redirect('admin/category')->with('flash_message', 'Category added!');
   }
 
-  public function show($id)
+  public function show(Product $product)
   {
-    $category = Category::findOrFail($id);
-    return view('admins.categories.show', compact('category'));
+      //
   }
 
-  public function edit($id)
+  public function edit(Product $product)
   {
-    $category = Category::findOrFail($id);
     $categories = Category::where(['parent_id'=>0])->get();
     $category_dropdown = "<option selected disabled>Main Category</option>";
     foreach ($categories as $cat) {
@@ -70,24 +74,25 @@ class CategoryController extends Controller
         $category_dropdown.="<option value='".$sub_cat->id."'>&nbsp;--&nbsp;".$sub_cat->category_name."</option>";
       }
     }
-    return view('admins.categories.edit', compact('category','category_dropdown'));
+     return view('admins.products.edit',compact('category_dropdown','product'));
   }
 
-  public function update(Request $request, $id)
-  {      
-    $requestData = $request->all();
-      if ($request->hasFile('image')) {
-        $requestData['image'] = $request->file('image')
-            ->store('uploads', 'public');
-    }
-    $category = Category::findOrFail($id);
-    $category->update($requestData);
-    return redirect('admin/category')->with('flash_message', 'Category updated!');
-  }
-
-  public function destroy($id)
+  public function update(Request $request, Product $product)
   {
-    Category::destroy($id);
-    return redirect('admin/category')->with('flash_message', 'Category deleted!');
+    $product->category_id = $request->category_id;
+    $product->product_name = $request->product_name;
+    $product->qty = $request->qty;
+    $product->price = $request->price;
+    $product->is_active = $request->is_active;
+    $product->description = $request->description;
+    $product->imageUpload('image',$product,'product');
+    if($product->save()){
+      return redirect()->route('product.index');
+    }
+  }
+
+  public function destroy(Product $product)
+  {
+      //
   }
 }

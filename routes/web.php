@@ -34,3 +34,4 @@ Route::get('/home', 'Admin\DashboardController@index')->name('home');
 Route::get('/dashboard', 'Admin\DashboardController@index')->name('dashboard');
 
 Route::resource('admin/category', 'Admin\\CategoryController');
+Route::resource('admin/product', 'Admin\\ProductController');

@@ -5,6 +5,7 @@
     "admin.language.translator": "បកប្រែភាសា",
     "admin.manage.language": "គ្រប់គ្រងភាសា",
     "admin.products": "មុខទំនិញ",
+    "admin.products.create": "បន្ថែមមុខទំនិញ",
     "admin.products.index": "បន្ថែមមុខទំនិញ",
     "dashboard": "ទំព័រមុខ"
 }

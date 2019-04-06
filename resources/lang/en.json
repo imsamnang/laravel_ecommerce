@@ -5,6 +5,7 @@
     "admin.language.translator": "Languages Translator",
     "admin.manage.language": "Manage Languages",
     "admin.products": "Products",
-    "admin.products.index": "Add New Product",
+    "admin.products.create": "Add New Product",
+    "admin.products.index": "Product Lists",
     "dashboard": "Dashboard"
 }

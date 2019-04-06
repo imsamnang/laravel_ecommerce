@@ -2,27 +2,29 @@
 
 namespace App\Model;
 
-use App\Model\Category;
 use App\Model\Upload as upload;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Category extends upload
+class Product extends upload
 {
 	use SoftDeletes;
 	protected $dates = ['deleted_at'];
-	protected $table = 'categories';
+	protected $table = 'products';
 	protected $primaryKey = 'id';
 	protected $fillable = [
-		'parent_id',
-		'category_name',
-		'description',
+		'category_id',
+		'product_code',
+		'product_name',
+		'qty',
+		'price',
 		'is_active',
+		'description',
 		'image'
 	];
 
-	public function childs()
+	public function category()
 	{
-		return $this->hasMany(Category::class,'parent_id','id');
+		return $this->belongsTo(Category::class,'category_id','id');
 	}
 }
