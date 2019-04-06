@@ -21,7 +21,7 @@
 	@stack('css')
 </head>
 
-<body>
+<body class="navbar-top-sm-xs">
 	<!-- Main navbar -->
 		@include('layouts.backend.includes.topheader')
 	<!-- /main navbar -->
@@ -38,7 +38,19 @@
 			<!-- Content area -->
 			<div class="content">
 				<!-- Basic setup -->
+				<div class="card">
+					<div class="card-header bg-gray header-elements-inline" style="background-color: #26a69a;">
+						<h6 class="card-title">@yield('formtitle', 'Form Title')</h6>
+						<div class="header-elements">
+							<div class="list-icons">
+								<a class="list-icons-item" data-action="collapse"></a>
+								<a class="list-icons-item" data-action="reload"></a>
+								<a class="list-icons-item" data-action="remove"></a>
+							</div>
+						</div>
+					</div>				
 					@yield('main-content')
+				</div>
 	      <!-- /basic setup -->
 			</div>
 			<!-- Footer -->

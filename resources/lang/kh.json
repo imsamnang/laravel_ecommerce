@@ -1,0 +1,10 @@
+{
+    "admin.categories": "ប្រភេទទំនិញ",
+    "admin.categories.create": "បន្ថែមប្រភេទទំនិញ",
+    "admin.categories.index": "បញ្ជីប្រភេទទំនិញ",
+    "admin.language.translator": "បកប្រែភាសា",
+    "admin.manage.language": "គ្រប់គ្រងភាសា",
+    "admin.products": "មុខទំនិញ",
+    "admin.products.index": "បន្ថែមមុខទំនិញ",
+    "dashboard": "ទំព័រមុខ"
+}

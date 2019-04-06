@@ -5,13 +5,14 @@
 @section('content')
 
   <div class="login-form">
-    <form action="/examples/actions/confirmation.php" method="post">
+    <form method="POST" action="{{ route('login') }}">
+      {{ csrf_field() }}
       <h2 class="text-center">User Login</h2>        
       {{-- username --}}
       <div class="form-group">
           <div class="input-group">
-              <span class="input-group-addon"><i class="fa fa-user"></i></span>
-              <input type="text" class="form-control" name="username" placeholder="Username" required="required">
+              <span class="input-group-addon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+              <input type="email" class="form-control" name="email" placeholder="Email or Username" required="required">
           </div>
       </div>
       {{-- password --}}
@@ -37,7 +38,7 @@
           <a href="#" class="pull-right text-success">Forgot Password?</a>
       </div>        
     </form>
-      <div class="hint-text small">Don't have an account? <a href="#" class="text-success">Register Now!</a></div>
+      <div class="hint-text small">Don't have an account? <a href="{{ route('register') }}" class="text-success">Register Now!</a></div>
   </div>
 
 @endsection

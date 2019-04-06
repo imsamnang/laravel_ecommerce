@@ -1,0 +1,10 @@
+{
+    "admin.categories": "Categories",
+    "admin.categories.create": "Add New Category",
+    "admin.categories.index": "Category Lists",
+    "admin.language.translator": "Languages Translator",
+    "admin.manage.language": "Manage Languages",
+    "admin.products": "Products",
+    "admin.products.index": "Add New Product",
+    "dashboard": "Dashboard"
+}
