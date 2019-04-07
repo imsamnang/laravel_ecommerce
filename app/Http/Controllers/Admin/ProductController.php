@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Model\Category;
 use App\Model\Product;
+use App\Model\ProductGallery;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -52,10 +53,11 @@ class ProductController extends Controller
     $product->price = $request->price;
     $product->is_active = $request->is_active;
     $product->description = $request->description;
-    $product->imageUpload('image',$product,'product');
+    $product->imageUpload('image',$product,'product');    
     if($product->save()){
-      return redirect()->route('product.index');
+      $product->imageGalleryUpload('imageGalleries',new ProductGallery(),'product/galleries',$product->id);
     }
+      return redirect()->route('product.index');
   }
 
   public function show(Product $product)
@@ -65,16 +67,27 @@ class ProductController extends Controller
 
   public function edit(Product $product)
   {
+    $imageGalleries = ProductGallery::where('product_id',$product->id)->get();
     $categories = Category::where(['parent_id'=>0])->get();
     $category_dropdown = "<option selected disabled>Main Category</option>";
     foreach ($categories as $cat) {
-      $category_dropdown.="<option value='".$cat->id."'>".$cat->category_name."</option>";
+      if($cat->id==$product->category_id){
+        $selected = "selected";
+      }else {
+        $selected = "";
+      }
+      $category_dropdown.="<option value='".$cat->id."' ".$selected.">".$cat->category_name."</option>";
       $sub_categories=Category::where(['parent_id'=>$cat->id])->get();
       foreach ($sub_categories as $sub_cat) {
-        $category_dropdown.="<option value='".$sub_cat->id."'>&nbsp;--&nbsp;".$sub_cat->category_name."</option>";
+        if($sub_cat->id==$product->category_id){
+          $selected = "selected";
+        }else {
+          $selected = "";
+        }        
+        $category_dropdown.="<option value='".$sub_cat->id."' ".$selected.">&nbsp;--&nbsp;".$sub_cat->category_name."</option>";
       }
     }
-     return view('admins.products.edit',compact('category_dropdown','product'));
+     return view('admins.products.edit',compact('category_dropdown','product','imageGalleries'));
   }
 
   public function update(Request $request, Product $product)
@@ -87,12 +100,16 @@ class ProductController extends Controller
     $product->description = $request->description;
     $product->imageUpload('image',$product,'product');
     if($product->save()){
-      return redirect()->route('product.index');
+
     }
+      return redirect()->route('product.index');
   }
 
   public function destroy(Product $product)
   {
-      //
+    if($product->destroy($product->id)){
+      ProductGallery::where('product_id',$product->id)->delete();
+      return redirect()->back();
+    }
   }
 }

@@ -6,10 +6,10 @@
 
 <div class="card">
   <div class="card-body">
-      <a href="{{ url('/admin/category/create') }}" class="btn btn-success btn-sm" title="Add New Category">
+      <a href="{{ url('/admin/product/create') }}" class="btn btn-success btn-sm" title="Add New Category">
           <i class="fa fa-plus" aria-hidden="true"></i> Add New
       </a>
-      <form method="GET" action="{{ url('/admin/category') }}" accept-charset="UTF-8" class="form-inline my-2 my-lg-0 float-right" role="search">
+      <form method="GET" action="{{ url('/admin/product') }}" accept-charset="UTF-8" class="form-inline my-2 my-lg-0 float-right" role="search">
         <div class="input-group">
           <input type="text" class="form-control" name="search" placeholder="Search..." value="{{ request('search') }}">
           <span class="input-group-append">
