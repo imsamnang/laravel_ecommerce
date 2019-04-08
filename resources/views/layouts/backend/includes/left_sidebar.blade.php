@@ -11,7 +11,6 @@
 		</a>
 	</div>
 	<!-- /sidebar mobile toggler -->
-
 	<!-- Sidebar content -->
 	<div class="sidebar-content">
 		<!-- User menu -->

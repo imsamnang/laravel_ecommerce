@@ -1,6 +1,6 @@
 @extends('layouts.backend.matrix_admin')
 
-@section('formtitle','Category Lists')
+@section('formtitle','Product Lists')
 
 @section('main-content')
 
@@ -21,7 +21,7 @@
       </form>
       <br/>
       <br/>
-      <div class="table-responsive">
+      <div class="table-responsive" style="width:1080px">
         <table class="table">
           <thead>
             <tr>

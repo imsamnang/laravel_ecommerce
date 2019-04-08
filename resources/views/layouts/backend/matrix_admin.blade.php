@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,7 +18,7 @@
   <!-- Custom CSS -->
   <link href="{{asset('assets/backend/matrix/dist/css/style.css')}}" rel="stylesheet">
   <link rel="stylesheet" href="{{asset('assets/backend/matrix/dist/css/custom.css')}}">
-
+  @stack('css')
 </head>
 
 <body>
@@ -74,11 +74,11 @@
       <!-- Container fluid  -->
       <!-- ============================================================== -->
       <div class="container-fluid">
-          <div class="row">
+        {{-- <div class="row"> --}}
           
           @yield('main-content')
 
-          </div>              
+        {{-- </div> --}}
       </div>
       <!-- ============================================================== -->
       <!-- End Container fluid  -->
@@ -104,7 +104,7 @@
   <!-- ============================================================== -->
   <script src="{{asset('assets/backend/matrix/assets/libs/jquery/dist/jquery.min.js')}}"></script>
   <!-- Bootstrap tether Core JavaScript -->
-<script src="{{asset('assets/backend/matrix/assets/libs/popper.js/dist/umd/popper.min.js')}}"></script>
+  <script src="{{asset('assets/backend/matrix/assets/libs/popper.js/dist/umd/popper.min.js')}}"></script>
   <script src="{{asset('assets/backend/matrix/assets/libs/bootstrap/dist/js/bootstrap.min.js')}}"></script>
   <script src="{{asset('assets/backend/matrix/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js')}}"></script>
   <script src="{{asset('assets/backend/matrix/assets/extra-libs/sparkline/sparkline.js')}}"></script>
@@ -114,7 +114,7 @@
   <script src="{{asset('assets/backend/matrix/dist/js/sidebarmenu.js')}}"></script>
   <!--Custom JavaScript -->
   <script src="{{asset('assets/backend/matrix/dist/js/custom.min.js')}}"></script>
-
+  @stack('js')
 </body>
 
 </html>

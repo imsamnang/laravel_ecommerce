@@ -1,4 +1,3 @@
-<div class="container">
   <div class="row">
     <div class="col-sm-6">
         {{-- category_level --}}
@@ -76,4 +75,3 @@
       <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'Update' : 'Create' }}">
     </div>
   </div>
-</div>

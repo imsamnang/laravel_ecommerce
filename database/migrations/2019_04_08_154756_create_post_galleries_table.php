@@ -4,22 +4,21 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProductGalleriesTable extends Migration
+class CreatePostGalleriesTable extends Migration
 {
-
   public function up()
   {
-    Schema::create('product_galleries', function (Blueprint $table) {
+    Schema::create('post_galleries', function (Blueprint $table) {
       $table->increments('id');
-      $table->integer('product_id')->unsigned();
+      $table->integer('post_id')->unsigned();
       $table->string('gallery_image')->nullable();
-      $table->softDeletes();
+      $table->softDeletes();            
       $table->timestamps();
     });
   }
 
   public function down()
   {
-    Schema::dropIfExists('product_galleries');
+    Schema::dropIfExists('post_galleries');
   }
 }
