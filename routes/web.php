@@ -1,5 +1,7 @@
 <?php
 
+Route::view('matrix','layouts.backend.matrix_admin');
+
 Auth::routes();
 
 //for switching language route
@@ -25,8 +27,6 @@ Route::resource('admin/activitylogs', 'Admin\\ActivityLogsController');
 	Route::get('admin/generator', ['uses' => 'Admin\\ProcessController@getGenerator']);
 	Route::post('admin/generator', ['uses' => 'Admin\\ProcessController@postGenerator']);
 
-
-
 Route::get('/', 'Admin\DashboardController@index');
 
 Route::get('/home', 'Admin\DashboardController@index')->name('home');
@@ -35,3 +35,7 @@ Route::get('/dashboard', 'Admin\DashboardController@index')->name('dashboard');
 
 Route::resource('admin/category', 'Admin\\CategoryController');
 Route::resource('admin/product', 'Admin\\ProductController');
+
+
+Route::get('post','FreePostController@index')->name('post.index');
+Route::get('post/{post_id}/create','FreePostController@create')->name('post.create');

@@ -1,11 +1,10 @@
-@extends('layouts.backend.master')
+@extends('layouts.backend.matrix_admin')
 
 @section('main-content')
 
   <div class="card">
       <div class="card-header">Category {{ $category->id }}</div>
       <div class="card-body">
-
           <a href="{{ url('/admin/category') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
           <a href="{{ url('/admin/category/' . $category->id . '/edit') }}" title="Edit Category"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
 
@@ -16,7 +15,6 @@
           </form>
           <br/>
           <br/>
-
           <div class="table-responsive">
               <table class="table">
                   <tbody>

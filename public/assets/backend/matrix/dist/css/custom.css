@@ -1,0 +1,29 @@
+#main-wrapper .topbar[data-navbarbg=skin5] {
+    background: #1F262D;
+    position: fixed;
+    width: -webkit-fill-available;
+}
+
+.page-breadcrumb {
+    padding: 75px 20px 0 20px;
+    margin-top: 100;
+}
+
+body {
+    margin: 0;
+    /*font-family: "Nunito Sans", sans-serif;*/
+    font-family: -apple-system,BlinkMacSystemFont,segoe ui,Roboto,helvetica neue,Arial,sans-serif,apple color emoji,segoe ui emoji,segoe ui symbol,noto color emoji,hanuman;
+    font-size: 0.90rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #3e5569;
+    text-align: left;
+    background-color: #eeeeee
+}
+
+.page-breadcrumb .breadcrumb {
+    padding: 0px;
+    margin: 0px;
+    background: transparent;
+    font-size: 14px;
+}
