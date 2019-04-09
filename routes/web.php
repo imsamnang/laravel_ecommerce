@@ -39,3 +39,6 @@ Route::resource('admin/product', 'Admin\\ProductController');
 
 Route::get('post','FreePostController@index')->name('post.index');
 Route::get('post/{post_id}/create','FreePostController@create')->name('post.create');
+
+Route::get('image-view','FreePostController@imageView')->name('image.view');
+Route::post('image-submit','FreePostController@imageSubmit')->name('image.submit');

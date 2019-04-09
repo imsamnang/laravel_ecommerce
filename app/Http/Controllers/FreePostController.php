@@ -21,4 +21,16 @@ class FreePostController extends Controller
 		$category = Category::where('id',$subcategory->parent_id)->first();
   	return view('freeads.create',compact('subcategory','category'));
   }
+
+  public function imageView()
+  {
+    return view('plupload.create');
+  }
+
+  public function imageSubmit(Request $request)
+  {
+    $imageName = $request->file->getClientOriginalName();
+    $request->file->move(public_path('uploads/freepost/'),$imageName);
+    return response()->json(['uploaded'=>'/uploads/freepost/'.$imageName]);
+  }
 }
