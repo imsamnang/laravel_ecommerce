@@ -6,11 +6,11 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateFreePostsTable extends Migration
 {
-
   public function up()
   {
     Schema::create('free_posts', function (Blueprint $table) {
       $table->increments('id');
+      $table->integer('user_id')->unsigned();
       $table->integer('category_id')->unsigned();
       $table->integer('parent_id')->unsigned();
       $table->string('title',150);

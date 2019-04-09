@@ -46,7 +46,7 @@
           _token:$("input[name='_token']").val()
          };
         },
-        allowedFileExtensions:['jpg','png','gif'],
+        allowedFileExtensions:['jpg','jpeg','png','gif'],
         overwriteInitial:false,
         maxFileSize:2000,
         maxFileCount: 8,
