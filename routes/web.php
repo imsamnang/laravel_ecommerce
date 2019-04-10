@@ -1,6 +1,7 @@
 <?php
 
 Route::view('matrix','layouts.backend.matrix_admin');
+Route::view('khmer24','layouts.backend.khmer24_layout');
 
 Auth::routes();
 
@@ -42,3 +43,12 @@ Route::get('post/{post_id}/create','FreePostController@create')->name('post.crea
 
 Route::get('image-view','FreePostController@imageView')->name('image.view');
 Route::post('image-submit','FreePostController@imageSubmit')->name('image.submit');
+
+Route::get('dropdownlist','DropdownController@index');
+Route::get('get-state-list','DropdownController@getStateList');
+Route::get('get-city-list','DropdownController@getCityList');
+
+
+// Route::get('upload','FreePostController@getIndex');	
+Route::get('preview','FreePostController@getPreview');
+Route::post('action','FreePostController@postAction');
