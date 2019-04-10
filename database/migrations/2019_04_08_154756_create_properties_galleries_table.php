@@ -4,13 +4,13 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePostGalleriesTable extends Migration
+class CreatePropertiesGalleriesTable extends Migration
 {
   public function up()
   {
-    Schema::create('post_galleries', function (Blueprint $table) {
+    Schema::create('properties_galleries', function (Blueprint $table) {
       $table->increments('id');
-      $table->integer('post_id')->unsigned();
+      $table->integer('property_id')->unsigned();
       $table->string('gallery_image')->nullable();
       $table->softDeletes();            
       $table->timestamps();
@@ -19,6 +19,6 @@ class CreatePostGalleriesTable extends Migration
 
   public function down()
   {
-    Schema::dropIfExists('post_galleries');
+    Schema::dropIfExists('properties_galleries');
   }
 }

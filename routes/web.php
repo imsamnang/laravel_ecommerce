@@ -42,3 +42,9 @@ Route::get('post/{post_id}/create','FreePostController@create')->name('post.crea
 
 Route::get('image-view','FreePostController@imageView')->name('image.view');
 Route::post('image-submit','FreePostController@imageSubmit')->name('image.submit');
+
+Route::get('/dynamic_dependent', 'DynamicDependent@index');
+Route::post('dynamic_dependent/fetch', 'DynamicDependent@fetch')->name('dynamicdependent.fetch');
+
+Route::get('/student', 'SchoolController@index');
+Route::get('students/get/{id}', 'SchoolController@getStudents');
