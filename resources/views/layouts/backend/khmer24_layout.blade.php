@@ -9,15 +9,15 @@
 	<script src="{{asset('assets/js/jquery-3.3.1.min.js')}}"></script>
 	<script src="{{asset('assets/js/main.js')}}"></script>
 	<script src="{{asset('assets/js/popper.min.js')}}"></script>
-	<link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
-	<script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
-	<link rel="stylesheet" href="{{asset('assets/css/main.css')}}">
-	<link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
-	<link rel="stylesheet" href="https://unpkg.com/ionicons@4.3.0/dist/css/ionicons.min.css">
-	<link rel="stylesheet" href="{{asset('assets/css/post.css')}}">
+	<link  href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
 	<script src="{{asset('assets/js/plupload.full.min.js')}}"></script>
 	<script src="{{asset('assets/js/jquery.chained.js')}}"></script>
 	<script src="{{asset('assets/js/jquery.validate.min.js')}}"></script>	
+	<script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
+	<link  href="{{asset('assets/css/main.css')}}" rel="stylesheet" type="text/css">
+	<link  href="{{asset('assets/css/style.css')}}" rel="stylesheet" type="text/css">
+	<link  href="https://unpkg.com/ionicons@4.3.0/dist/css/ionicons.min.css">
+	<link  href="{{asset('assets/css/post.css')}}" rel="stylesheet" type="text/css">
 	<style type="text/css">
 		body {
 			min-width: 1090px;
@@ -30,7 +30,7 @@
 	<header id="header" class="bg-white border-bottom">
 		<div class="my-container header-content">
 			<nav class="navbar row">
-				<a href="https://www.khmer24.com/en/" class="navbar-brand"><img src="https://www.khmer24.com/khmer24-reform21/template/img/khmer24.gif" alt="Khmer24"></a>
+				<a href="#" class="navbar-brand"><img src="https://www.khmer24.com/khmer24-reform21/template/img/khmer24.gif" alt="Khmer24"></a>
 				<ul class="nav mr-auto left-nav">
 					<li class="nav-item">
 						<a class="nav-link disabled btn-change-lang" href="https://www.khmer24.com/km/post.html"><span class="icon khmer-flage"></span></a>
@@ -215,14 +215,6 @@
 	<a href="https://www.khmer24.com/en/feedback" class="btn btn-primary btn-sm">Feedback</a>
 	</div>
 
-
-{{-- 	<script src="{{asset('assets/js/jquery-3.3.1.min.js')}}"></script>
-	<script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
-	<script src="{{asset('assets/js/main.js')}}"></script>
-	<script src="{{asset('assets/js/popper.min.js')}}"></script>
-	<script src="{{asset('assets/js/plupload.full.min.js')}}"></script>
-	<script src="{{asset('assets/js/jquery.chained.js')}}"></script>
-	<script src="{{asset('assets/js/jquery.validate.min.js')}}"></script> --}}
 
 	@stack('js')
 </body>

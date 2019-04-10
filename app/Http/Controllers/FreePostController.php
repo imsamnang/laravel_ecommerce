@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Model\Category;
+use App\Model\PropertyGallery;
 use Illuminate\Http\Request;
 
 class FreePostController extends Controller
@@ -10,8 +11,6 @@ class FreePostController extends Controller
   public function index()
   {
   	$categories = Category::where(['parent_id'=>0])->get();
-    // $subategories = Category::where(['parent_id'=>$categories->id])->get();
-    // return $categories;
   	return view('freeads.index',compact('categories'));
   }
 
@@ -33,4 +32,32 @@ class FreePostController extends Controller
     $request->file->move(public_path('uploads/freepost/'),$imageName);
     return response()->json(['uploaded'=>'/uploads/freepost/'.$imageName]);
   }
+
+  // public function getIndex(){
+  //   $images = Image::orderBy('id','desc')->get();
+  //   return view('admin.upload.khmer24',['images' => $images]);
+  // }
+
+  public function getPreview(){
+    $images = PropertyGallery::orderBy('id','desc')->get();
+    return view('freeads.preview',['images' => $images]);
+  }
+
+  public function postAction(Request $request){
+   if($request->exists('btn-multiupload')){
+      $file = $request->file('file');
+      $path = 'uploads/properties/';
+      $filename = $file->getClientOriginalName();
+      $file->move($path,$file->getClientOriginalName());
+      $image = new PropertyGallery();
+      $image->image_name = $filename;
+      $image->save();
+      echo 'Uploaded';
+    }
+  }
+
+  public function getTestpackage(){
+      $img = PropertyGallery::make('images/uploads/Koala.jpg')->resize(300, 200);
+      return $img->response('jpg');
+  }  
 }

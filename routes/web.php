@@ -1,6 +1,7 @@
 <?php
 
 Route::view('matrix','layouts.backend.matrix_admin');
+Route::view('khmer24','layouts.backend.khmer24_layout');
 
 Auth::routes();
 
@@ -48,3 +49,11 @@ Route::post('dynamic_dependent/fetch', 'DynamicDependent@fetch')->name('dynamicd
 
 Route::get('/student', 'SchoolController@index');
 Route::get('students/get/{id}', 'SchoolController@getStudents');
+Route::get('dropdownlist','DropdownController@index');
+Route::get('get-state-list','DropdownController@getStateList');
+Route::get('get-city-list','DropdownController@getCityList');
+
+
+// Route::get('upload','FreePostController@getIndex');	
+Route::get('preview','FreePostController@getPreview');
+Route::post('action','FreePostController@postAction');

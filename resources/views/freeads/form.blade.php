@@ -11,7 +11,9 @@
 
 		<div class="post_form p-3">
 			<div class="post_form">
-				<form action="#" id="form-post" class="form form-horizontal" method="post" accept-charset="utf-8" novalidate="novalidate">
+				<form action="#" id="form-post" class="form form-horizontal" method="post" accept-charset="utf-8" novalidate="novalidate" enctype="multipart/form-data">
+					<input type="hidden" name="csrf_test_name" id="csrf_test_name" value="{{csrf_field()}}">
+					{{csrf_field()}}
 					<input type="hidden" name="category_id" value="{{$category->id}}">
 					<input type="hidden" value="sub_cate_id" name="{{$subcategory->id}}">
 					{{-- category --}}
@@ -32,54 +34,6 @@
 						<label for="ad_headline" class="col control-label">Title <span class="red">*</span></label>
 						<div class="col col-6 form-input">
 						<input id="ad_headline" class="form-control" type="text" name="ad_headline" value="" required="">
-						</div>
-					</div>
-					{{-- Bedroom --}}
-					<div class="form-group input-ad_field">
-						<label for="ad_field" class="col-sm-3 control-label">Bedroom</label>
-						<div class="form-input col-sm-6 col-lg-3">
-							<select id="ad_field" name="ad_field" class="form-control ">
-								<option value="" data-value=""></option>
-								<option value="1" data-value="1" class="empty1">1</option>
-								<option value="2" data-value="2" class="empty1">2</option>
-								<option value="3" data-value="3" class="empty1">3</option>
-								<option value="4" data-value="4" class="empty1">4</option>
-								<option value="5" data-value="5" class="empty1">5</option><option value="6" data-value="6" class="empty1">6</option>
-								<option value="more" data-value="more" class="empty1">More+</option>
-							</select>
-						</div>
-					</div>
-					{{-- Bathroom --}}
-					<div class="form-group input-ad_model">
-						<label for="ad_model" class="col-sm-3 control-label">Bathroom</label>
-						<div class="form-input col-sm-6 col-lg-3">
-							<select id="ad_model" name="ad_model" class="form-control ">
-								<option value="" data-value=""></option>
-								<option value="1" data-value="1" class="empty1">1</option>
-								<option value="2" data-value="2" class="empty1">2</option>
-								<option value="3" data-value="3" class="empty1">3</option>
-								<option value="4" data-value="4" class="empty1">4</option>
-								<option value="5" data-value="5" class="empty1">5</option>
-								<option value="6" data-value="6" class="empty1">6</option>
-								<option value="more" data-value="more" class="empty1">More+</option>
-							</select>
-						</div>
-					</div>
-					{{-- Facing --}}
-					<div class="form-group input-ad_auto_condition">
-						<label for="ad_auto_condition" class="col-sm-3 control-label">Facing</label>
-						<div class="form-input col-sm-6 col-lg-3">
-							<select id="ad_auto_condition" name="ad_auto_condition" class="form-control ">
-								<option value="" data-value=""></option>
-								<option value="east" data-value="east" class="empty1">East</option>
-								<option value="north" data-value="north" class="empty1">North</option>
-								<option value="northeast" data-value="northeast" class="empty1">Northeast</option>
-								<option value="northwest" data-value="northwest" class="empty1">Northwest</option>
-								<option value="south" data-value="south" class="empty1">South</option>
-								<option value="southeast" data-value="southeast" class="empty1">Southeast</option>
-								<option value="southwest" data-value="southwest" class="empty1">Southwest</option>
-								<option value="west" data-value="west" class="empty1">West</option>
-							</select>
 						</div>
 					</div>
 					{{-- Size --}}
@@ -210,11 +164,10 @@
 							<input type="email" name="email" id="email" class="form-control" value="">
 						</div>
 					</div>
-
+					{{-- address detail group --}}
 					<div class="locations_box">
-
 						<div class="controls">
-
+							{{-- Province --}}
 							<div class="form-group">
 								<label for="province" class="col control-label">City/Province<i class="red">*</i></label>
 								<div class="col col-3 form-input">
@@ -247,7 +200,7 @@
 									</select>
 								</div>
 							</div>
-
+							{{-- District --}}
 							<div class="form-group">
 								<label for="district" class="col control-label">Khan/District <i class="red">*</i></label>
 								<div class="col col-3 form-input">
@@ -256,7 +209,7 @@
 								</select>
 								</div>
 							</div>
-
+							{{-- Commune --}}
 							<div class="form-group">
 								<label for="commune" class="col control-label">Sangkat/Commune <i class="red">*</i></label>
 								<div class="col col-3 form-input">
@@ -265,14 +218,13 @@
 									</select>
 								</div>
 							</div>
-
 							<script type="text/javascript">
 								$('document').ready(function(){
 									$("#district").chained("#province");
 									$("#commune").chained("#district");	               						
 								});
 							</script>
-
+							{{-- location Detail --}}
 							<div class="form-group">
 								<label for="address" class="col control-label">Location Details<i class="red">*</i></label>
 								<div class="col col-8 form-input">
@@ -280,7 +232,6 @@
 								</div>
 							</div>
 						</div>
-
 						<div class="form-group">
 							<div class="map_view col-12">
 								<div class="map_box hidden" id="ad_map">
@@ -293,7 +244,7 @@
 							</div>
 						</div>
 					</div>
-
+					{{-- save contact information --}}
 					<div class="form-group">
 						<div class="col col-8">
 							<label class="save_contact">
@@ -304,15 +255,14 @@
 							</label>
 						</div>
 					</div>
-
+					{{-- submit button --}}
 					<div class="form-group submit_box">
 						<div class="col-sm-offset-2 col col-3 btn_submit">
 							<input type="submit" name="save_ad" value="Submit" class="btn btn-lg btnsavead btn-warning btn-block">
 						</div>
 					</div>
-
 				</form>
-
+				{{-- Posting Rule --}}
 				<div class="posting_rule">
 					<span class="rule_title"><i class="icon-warning"></i> Posting Rule</span>
 					<ul>

@@ -5,7 +5,8 @@
 @endpush
 
 @section('content')
-	<script>
+
+	<script type="text/javascript">
 	  $(document).ready(function() {
 			jQuery.validator.addMethod("phone", function(value, element) {
 				if((value.charAt(0)==0 && value.charAt(1)!=0) || value.length==0 ){
@@ -68,8 +69,6 @@
 								window.location = 'https://www.khmer24.com/en/manage-ads.html'; 
 							} else {
 								$('#account-question').modal('show');
-								// $.fancybox('#account-question',{autoSize : true, width: '100%', height:'100%',padding:0, margin:0, modal:true });
-		              //  window.location = 'https://www.khmer24.com/en/register.html'; 
 		          }
 		      }else{
 		      	$("#form-post input[type='submit']").removeAttr('disabled').val('Submit').removeAttr('style');
@@ -88,21 +87,101 @@
 @endsection
 
 @push('js')
-{{-- google map --}}
-	{{-- @include('freeags.googlemap') --}}
+
+{{-- upload image --}}
+{{-- <script type="text/javascript">
+	var uploader = new plupload.Uploader({
+		runtimes : 'html5,flash,silverlight,html4',
+		browse_button : ["browse-1","browse-2","browse-3","browse-4","browse-5","browse-6","browse-7","browse-8"], // you can pass an id...
+		container: document.getElementById('multi-upload'), // ... or DOM Element itself
+		url :'/action/',
+		flash_swf_url : '/assets/lib/plupload/js/Moxie.swf',
+		silverlight_xap_url : '/assets/lib/plupload/js/Moxie.xap',
+		filters : {
+			max_file_size : '10mb',
+			mime_types: [
+				{title : "Image files", extensions : "jpg,gif,png"},
+				{title : "Zip files", extensions : "zip"}
+			]
+		},
+		init: {
+			PostInit: function() {
+				document.getElementById('browse-1').onclick = function() {
+					uploader.start();
+					return false;
+				};
+			},
+			FilesAdded: function(up, files) {
+				plupload.each(files, function(file) {
+					preview.showImagePreview( file ,file.id);
+				});
+				preview.removeImagePreview();
+			},
+			UploadProgress: function(up, file) {
+				console.log('File ID : '+file.id);
+				document.getElementById('thumbs-'+file.id).getElementsByTagName('b')[0].innerHTML = '<span>' + file.percent + "%</span>";
+			},
+			Error: function(up, err) {
+				document.getElementById('console').appendChild(document.createTextNode("\nError #" + err.code + ": " + err.message));
+			},
+			UploadComplete: function(up, files) {
+				display();
+				$('#gallery .preview').html('');
+				console.log('Upload Complete');
+			}
+		},
+		multipart_params: {
+			_token : $("#_token").val(),'btn-multiupload':''
+		},
+	});
+	var preview = {
+		showImagePreview   : function( file , id) {
+			var item = $( '<li id="thumbs-'+ id + '"><b></b><a href="'+ id +'" class="color-red del-preview glyphicon glyphicon-off"></a></li>' ).prependTo( '#gallery .preview' );
+			var image = $( new Image() ).appendTo(item);
+			var preloader = new mOxie.Image();
+			preloader.onload = function() {
+				preloader.downsize( 100, 100 );
+				image.prop({ "src": preloader.getAsDataURL(),'id':id,'class':'img-preview'} );
+			};
+			preloader.load( file.getSource() );
+		},
+		removeImagePreview	:	function (){
+			$('.del-preview').on('click',function(e){
+				e.preventDefault();
+				var thumb  = $('#thumbs-' + $(this).attr('href'));
+				thumb.remove();
+			});
+		}
+	}
+	var display = function(){
+		$('.image-view').html('Loading...');
+		$.ajax({url : '/preview',
+				success : function(data){
+					// $('#multi-upload').html(data);
+				}
+		});
+	}
+	display();
+	uploader.init();
+</script> --}}
+
 	<script type="text/javascript">
 		$(document).ready(function(){
+			$.ajaxSetup({
+			    headers: {
+			        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			    }
+			});
 			var csrf = $('#csrf').val();
 			var counter=1;
 			var image=[];
 			var limit = 8;
 			var max_size = 10;
-			var base_url = document.getElementById('base_url').value;
 			var maxRes = 1000000;
 			var multi_uploader = new plupload.Uploader({
 				runtimes : 'html5,flash,silverlight,html4',
 				browse_button: ["browse-1","browse-2","browse-3","browse-4","browse-5","browse-6","browse-7","browse-8"],
-				url: base_url+'upload/do_upload.html',
+				url: '/action/',
 				max_file_size : max_size+'mb',
 				unique_names : true,
 				chunk_size: '1mb',
@@ -114,13 +193,12 @@
 					check_image_size: 100
 				},
 				drop_element : 'multi-upload',
-				flash_swf_url : 'https://www.khmer24.com/khmer24-reform21/template/plugin/plupload-2.1.8/Moxie.swf',
-				silverlight_xap_url : 'https://www.khmer24.com/khmer24-reform21/template/plugin/plupload-2.1.8/Moxie.xap'
+				flash_swf_url : '/assets/lib/plupload/js/Moxie.swf',
+				silverlight_xap_url : '/assets/lib/plupload/js/Moxie.xap'
 			});
 			multi_uploader.init();
 
 			multi_uploader.bind('FilesAdded', function(up, files) {
-
 				$('#multi-upload').removeClass('drag-over');
 				var i = counter;
 				var j = 1;
@@ -146,13 +224,10 @@
 				} else {
 					multi_uploader.start();
 				}
-
 			});
-
 			multi_uploader.bind('BeforeUpload', function (up, file) {
-				up.settings.multipart_params = {'csrf_test_name': csrf}
+				up.settings.multipart_params = {_token : $("#_token").val(),'btn-multiupload':''}
 			});
-
 			multi_uploader.bind('UploadProgress', function(up, file) {
 				$('#multi-upload').removeClass('drag-over');
 				for (k = 1; k <= limit; k++) { 
@@ -169,10 +244,7 @@
 						break;
 					}
 				}
-
-
 			});
-
 			multi_uploader.bind('Error', function(up, err) {
 				$('#multi-upload').removeClass('drag-over');
 				var f_size = (err.file.origSize/1024)/1024;
@@ -186,9 +258,7 @@
 					$('#console').append('<div class="error alert alert-danger">'+message+' <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
 				}
 				multi_uploader.refresh();
-
 			});
-
 			multi_uploader.bind('UploadComplete', function(upldr, file) {
 				multi_uploader.splice();
 				$('.list-image').find('.upload_percent').remove();
@@ -201,11 +271,8 @@
 						$('body').find('div#item-'+k).find('a.btn-browse').show();
 					}
 				}
-
 				multi_uploader.refresh();
-
 			});
-
 			multi_uploader.bind('FileUploaded', function(upldr, file, object) {
 				var myData;
 				try {
@@ -214,7 +281,6 @@
 					myData = eval('(' + object.response + ')');
 				}
 				if(myData.status=='success') {
-
 					for (k = 1; k <= limit; k++) { 
 						if(image['item-'+k]==undefined || image['item-'+k]=='loading' || image['item-'+k]=='') {
 							$('#item-'+k).append('<div class="img"><a href="javascript:;" class="delete remove" data-img="'+myData.image+'">Delete</a><a href="javascript:;" class="image_rotate" data-img="'+myData.image+'">Rotate</a><div class="img-view"><img class="img-contain" src="'+base_url+'tmp/'+myData.thumb+'"><input name="pl_file['+k+']" type="hidden" value="'+myData.image+'" style="display:none"></div></div>');
@@ -224,7 +290,6 @@
 							break;
 						}
 					}
-
 					if(counter>=limit) {
 						multi_uploader.disableBrowse(true);
 						multi_uploader.stop();
@@ -244,47 +309,35 @@
 				$('#current_uploads').html(counter-1);
 				multi_uploader.refresh();
 			});
-
 			plupload.addFileFilter('check_image_size', function(minRes, file, cb) {
-
 				var self = this, img = new o.Image();
-
 				function finalize(result) {
-
 					var msg = "Please upload image at less "+minRes+"px width and "+minRes+"px height.";
 					if(img.width > 6500 || img.height > 6500) {
 						msg = "Image <strong>"+img.name+"</strong> too big.";
 					}
-
-		            // cleanup
-		            img.destroy();
-		            img = null;
-
-		            // if rule has been violated in one way or another, trigger an error
-		            if (!result) {
-		            	self.trigger('Error', {
-		            		code : plupload.IMAGE_DIMENSIONS_ERROR,
-		            		message : msg,
-		            		file : file
-		            	});
-		            }
-
-		            cb(result);
-
-		        }
-
-
-		        if(file.type!="image/gif") {         
-		        	img.onload = function() {
-		            // check if resolution cap is not exceeded
-		            finalize((img.width > minRes && img.height > minRes) && (img.width < 6500 && img.height < 6500));
-		        };
-
-		        img.onerror = function() {
-		        	finalize(false);
-		        };
-
-		        img.load(file.getSource());
+          // cleanup
+          img.destroy();
+          img = null;
+          // if rule has been violated in one way or another, trigger an error
+          if (!result) {
+          	self.trigger('Error', {
+          		code : plupload.IMAGE_DIMENSIONS_ERROR,
+          		message : msg,
+          		file : file
+          	});
+          }
+          cb(result);
+        }
+        if(file.type!="image/gif") {         
+        	img.onload = function() {
+            // check if resolution cap is not exceeded
+            finalize((img.width > minRes && img.height > minRes) && (img.width < 6500 && img.height < 6500));
+        };
+        img.onerror = function() {
+        	finalize(false);
+        };
+        img.load(file.getSource());
 		    } else {
 		    	finalize(1);
 		    }
