@@ -4,14 +4,12 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     *
-     * @return void
-     */
     public function run()
     {
-        // $this->call(CreateLanguages::class);
-        $this->call(CountryStateCityTableSeeder::class);
+      // $this->call(CreateLanguages::class);
+      // $this->call(CountryStateCityTableSeeder::class);
+      $this->call(ProvincesTableSeeder::class);
+      $this->call(DistrictsTableSeeder::class); 
+      $this->call(CommunesTableSeeder::class); 
     }
 }

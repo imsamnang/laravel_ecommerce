@@ -16,16 +16,16 @@ class CreateProvinceDistrictCommuneTables extends Migration
     });
     Schema::create('districts', function (Blueprint $table) {
         $table->increments('id');
+        $table->integer('province_id');            
         $table->string('name_en');
         $table->string('name_kh');
-        $table->integer('province_id');            
         $table->timestamps();
     });
     Schema::create('communes', function (Blueprint $table) {
         $table->increments('id');
+        $table->integer('district_id');
         $table->string('name_en');
         $table->string('name_kh');
-        $table->integer('district_id');
         $table->timestamps();
     });
   }

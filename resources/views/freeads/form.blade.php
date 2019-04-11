@@ -173,30 +173,10 @@
 								<div class="col col-3 form-input">
 									<select data-placeholder="Select a province" id="province" name="province" class="form-control map_form" required="">
 										<option value="" data-value="">Select a City/Province</option>
-										<option data-en-title="Phnom Penh" value="32" data-value="phnom-penh">Phnom Penh</option>
-										<option data-en-title="Preah Sihanouk" value="38" data-value="preah-sihanouk">Preah Sihanouk</option>
-										<option data-en-title="Kampong Cham" value="20" data-value="kampong-cham">Kampong Cham</option>
-										<option data-en-title="Siem Reap" value="37" data-value="siem-reap">Siem Reap</option>
-										<option data-en-title="Battambang" value="19" data-value="battambang">Battambang</option>
-										<option data-en-title="Kandal" value="25" data-value="kandal">Kandal</option>
-										<option data-en-title="Banteay Meanchey" value="18" data-value="banteay-meanchey">Banteay Meanchey</option>
-										<option data-en-title="Kampong Chhnang" value="21" data-value="kampong-chhnang">Kampong Chhnang</option>
-										<option data-en-title="Kampong Speu" value="22" data-value="kampong-speu">Kampong Speu</option>
-										<option data-en-title="Kampong Thom" value="23" data-value="kampong-thom">Kampong Thom</option>
-										<option data-en-title="Kampot" value="24" data-value="kampot">Kampot</option>
-										<option data-en-title="Kep" value="26" data-value="kep">Kep</option>
-										<option data-en-title="Koh Kong" value="27" data-value="koh-kong">Koh Kong</option>
-										<option data-en-title="Kratie" value="28" data-value="kratie">Kratie</option>
-										<option data-en-title="Mondulkiri" value="29" data-value="mondulkiri">Mondulkiri</option>
-										<option data-en-title="Oddar Meanchey" value="30" data-value="oddar-meanchey">Otdar Meanchey</option>
-										<option data-en-title="Pailin" value="31" data-value="pailin">Pailin</option>
-										<option data-en-title="Preah Vihear" value="33" data-value="preah-vihear">Preah Vihear</option><option data-en-title="Prey Veng" value="34" data-value="prey-veng">Prey Veng</option>
-										<option data-en-title="Pursat" value="35" data-value="pursat">Pursat</option>
-										<option data-en-title="Ratanakiri" value="36" data-value="ratanakiri">Ratanakiri</option>
-										<option data-en-title="Stung Treng" value="39" data-value="stung-treng">Stung Treng</option>
-										<option data-en-title="Svay Rieng" value="40" data-value="svay-rieng">Svay Rieng</option>
-										<option data-en-title="Takeo" value="41" data-value="takeo">Takeo</option>
-										<option data-en-title="Tboung Khmum" value="44" data-value="tboung-khmum">Tboung Khmum</option>
+										@foreach ($provinces as $key => $province)
+											<option data-en-title="{{$province}}" value="{{$key}}" data-value="tboung-khmum">{{$province}}</option>
+										@endforeach
+
 									</select>
 								</div>
 							</div>
@@ -218,12 +198,12 @@
 									</select>
 								</div>
 							</div>
-							<script type="text/javascript">
+	{{-- 						<script type="text/javascript">
 								$('document').ready(function(){
 									$("#district").chained("#province");
 									$("#commune").chained("#district");	               						
 								});
-							</script>
+							</script> --}}
 							{{-- location Detail --}}
 							<div class="form-group">
 								<label for="address" class="col control-label">Location Details<i class="red">*</i></label>

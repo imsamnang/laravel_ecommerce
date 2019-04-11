@@ -165,7 +165,7 @@
 	uploader.init();
 </script> --}}
 
-	<script type="text/javascript">
+{{-- 	<script type="text/javascript">
 		$(document).ready(function(){
 			$.ajaxSetup({
 			    headers: {
@@ -530,6 +530,55 @@
 	  });
 
 		});
-	</script>
-	
+	</script> --}}
+
+<script type="text/javascript">
+    $('#province').change(function(){
+      var countryID = $(this).val();    
+      if(countryID){
+          $.ajax({
+             type:"GET",
+             url:"{{url('get-state-list')}}?country_id="+countryID,
+             success:function(res){               
+              if(res){
+                  $("#district").empty();
+                  $("#district").append('<option>Select</option>');
+                  $.each(res,function(key,value){
+                      $("#district").append('<option value="'+key+'">'+value+'</option>');
+                  });
+             
+              }else{
+                 $("#state").empty();
+              }
+             }
+          });
+      }else{
+          $("#district").empty();
+          $("#commune").empty();
+      }      
+    });
+
+    $('#district').on('change',function(){
+      var stateID = $(this).val();    
+      if(stateID){
+          $.ajax({
+             type:"GET",
+             url:"{{url('get-city-list')}}?state_id="+stateID,
+             success:function(res){               
+              if(res){
+                  $("#commune").empty();
+                  $.each(res,function(key,value){
+                      $("#commune").append('<option value="'+key+'">'+value+'</option>');
+                  });
+             
+              }else{
+                 $("#commune").empty();
+              }
+             }
+          });
+      }else{
+          $("#commune").empty();
+      }        
+    });
+</script>	
 @endpush

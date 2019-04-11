@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Model\Category;
 use App\Model\PropertyGallery;
+use App\Model\Province;
 use Illuminate\Http\Request;
 
 class FreePostController extends Controller
@@ -16,9 +17,10 @@ class FreePostController extends Controller
 
   public function create($id)
   {
+    $provinces = Province::pluck('name_en','id');
     $subcategory = Category::where(['id'=>$id])->first();
 		$category = Category::where('id',$subcategory->parent_id)->first();
-  	return view('freeads.create',compact('subcategory','category'));
+  	return view('freeads.create',compact('subcategory','category','provinces'));
   }
 
   public function imageView()
