@@ -533,52 +533,77 @@
 	</script> --}}
 
 <script type="text/javascript">
+	$('document').ready(function(){
+	// distrct get data by provice change
     $('#province').change(function(){
-      var countryID = $(this).val();    
-      if(countryID){
+   	 	var provinceID = $(this).val();
+      if(provinceID>=1){
           $.ajax({
              type:"GET",
-             url:"{{url('get-state-list')}}?country_id="+countryID,
+             url:"{{url('get-district-list')}}?province_id="+provinceID,
              success:function(res){               
               if(res){
+              		// $("#district").removeAttr('disabled');
+              		$("#district" ).prop( "disabled", false );
                   $("#district").empty();
-                  $("#district").append('<option>Select</option>');
+                  $("#district").append('<option value="0" data-value="">Select a Khan/District</option>');
                   $.each(res,function(key,value){
                       $("#district").append('<option value="'+key+'">'+value+'</option>');
                   });
              
               }else{
-                 $("#state").empty();
+                 $("#district").empty();
+                 $("#district" ).prop( "disabled", true );
+                 $("#commune" ).prop( "disabled", true );
               }
              }
           });
       }else{
           $("#district").empty();
           $("#commune").empty();
+          $("#district").append('<option value="0" data-value="">Select a Khan/District</option>');
+          $("#commune").append('<option value="0" data-value="">Select a Sangkat/Commune</option>');
+          $("#district" ).prop( "disabled", true );
+          $("#commune" ).prop( "disabled", true );
       }      
     });
-
+	// commune get data by district change    
     $('#district').on('change',function(){
-      var stateID = $(this).val();    
-      if(stateID){
+      var districtID = $(this).val();
+      if(districtID>=1){
           $.ajax({
              type:"GET",
-             url:"{{url('get-city-list')}}?state_id="+stateID,
+             url:"{{url('get-commune-list')}}?district_id="+districtID,
              success:function(res){               
               if(res){
+              		$("#commune" ).prop( "disabled", false );
                   $("#commune").empty();
+                  $("#commune").append('<option value="0" data-value="">Select a Sangkat/Commune</option>');
+                  										
                   $.each(res,function(key,value){
-                      $("#commune").append('<option value="'+key+'">'+value+'</option>');
+                    $("#commune").append('<option value="'+key+'">'+value+'</option>');
                   });
              
               }else{
                  $("#commune").empty();
+                 $("#commune" ).prop( "disabled", true );
               }
              }
           });
       }else{
-          $("#commune").empty();
+        $("#commune").empty();
+        $("#commune").append('<option value="0" data-value="">Select a Sangkat/Commune</option>');
+        $("#commune" ).prop( "disabled", true );
       }        
     });
-</script>	
+	});
+</script>
+
+{{-- <script type="text/javascript">
+	$('document').ready(function(){
+		$("#district").chained("#province");
+		$("#commune").chained("#district");	               						
+	});
+</script>  --}}	
+
 @endpush

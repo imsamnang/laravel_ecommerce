@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Model\Category;
+use App\Model\Commune;
+use App\Model\District;
 use App\Model\PropertyGallery;
 use App\Model\Province;
 use Illuminate\Http\Request;
@@ -59,7 +61,24 @@ class FreePostController extends Controller
   }
 
   public function getTestpackage(){
-      $img = PropertyGallery::make('images/uploads/Koala.jpg')->resize(300, 200);
-      return $img->response('jpg');
-  }  
+    $img = PropertyGallery::make('images/uploads/Koala.jpg')->resize(300, 200);
+    return $img->response('jpg');
+  }
+
+  public function getDistrictList(Request $request)
+  {
+    $districts = District::where("province_id",$request->province_id)
+    ->pluck("name_en","id");
+    return response()->json($districts);
+  }
+
+  public function getCommuneList(Request $request)
+  {
+    $communes = Commune::where("district_id",$request->district_id)
+    ->pluck("name_en","id");
+    return response()->json($communes);
+  }
+
+
+
 }

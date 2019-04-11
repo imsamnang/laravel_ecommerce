@@ -25,15 +25,15 @@ class CommunesTableSeeder extends Seeder
 			  \DB::table('communes')->insert(['name_en' => 'Praek Aeng','name_kh' => '','district_id'=>6]);
 
 			 // Siem Reap communes
-			  \DB::table('communes')->insert(['name_en' => 'Char Chhouk','name_kh' => '','district_id'=>1]);
-				\DB::table('communes')->insert(['name_en' => 'Daun Peng','name_kh' => '','district_id'=>1]);
-				\DB::table('communes')->insert(['name_en' => 'Chub Tatrav','name_kh' => '','district_id'=>2]);
-				\DB::table('communes')->insert(['name_en' => 'Leang Dai','name_kh' => '','district_id'=>2]);	
-				\DB::table('communes')->insert(['name_en' => 'Khnar Sanday','name_kh' => '','district_id'=>3]);
-				\DB::table('communes')->insert(['name_en' => 'Khun Ream','name_kh' => '','district_id'=>3]);	
-				\DB::table('communes')->insert(['name_en' => 'Anlong Samnor','name_kh' => '','district_id'=>4]);
-				\DB::table('communes')->insert(['name_en' => 'Chi Kraeng','name_kh' => '','district_id'=>4]);	
-				\DB::table('communes')->insert(['name_en' => 'Chonleas Dai','name_kh' => '','district_id'=>5]);
-				\DB::table('communes')->insert(['name_en' => 'Kampong Thkov','name_kh' => '','district_id'=>5]);
+			  \DB::table('communes')->insert(['name_en' => 'Char Chhouk','name_kh' => '','district_id'=>27]);
+				\DB::table('communes')->insert(['name_en' => 'Daun Peng','name_kh' => '','district_id'=>27]);
+				\DB::table('communes')->insert(['name_en' => 'Chub Tatrav','name_kh' => '','district_id'=>28]);
+				\DB::table('communes')->insert(['name_en' => 'Leang Dai','name_kh' => '','district_id'=>28]);	
+				\DB::table('communes')->insert(['name_en' => 'Khnar Sanday','name_kh' => '','district_id'=>29]);
+				\DB::table('communes')->insert(['name_en' => 'Khun Ream','name_kh' => '','district_id'=>29]);	
+				\DB::table('communes')->insert(['name_en' => 'Anlong Samnor','name_kh' => '','district_id'=>30]);
+				\DB::table('communes')->insert(['name_en' => 'Chi Kraeng','name_kh' => '','district_id'=>30]);	
+				\DB::table('communes')->insert(['name_en' => 'Chonleas Dai','name_kh' => '','district_id'=>31]);
+				\DB::table('communes')->insert(['name_en' => 'Kampong Thkov','name_kh' => '','district_id'=>31]);
 	}
 }

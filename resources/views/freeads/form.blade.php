@@ -65,7 +65,7 @@
 					{{-- Photo --}}
 					<div class="form-group">
 						<label for="ad_text" class="col control-label">Ad Photos <i class="red">*</i></label>
-						<div id="plupload" class="col-8">
+{{-- 						<div id="plupload" class="col-8">
 							<div class="row plupload_block">
 								<div class="pl fleft col-12">
 								<span class="drop_file_hear"></span>
@@ -130,7 +130,7 @@
 								<input type="hidden" id="csrf" value="{{csrf_field()}}">
 								<input type="hidden" id="browser" value="">
 							</div>
-						</div>
+						</div> --}}
 					</div>
 					{{-- Name --}}
 					<div class="form-group">
@@ -171,8 +171,8 @@
 							<div class="form-group">
 								<label for="province" class="col control-label">City/Province<i class="red">*</i></label>
 								<div class="col col-3 form-input">
-									<select data-placeholder="Select a province" id="province" name="province" class="form-control map_form" required="">
-										<option value="" data-value="">Select a City/Province</option>
+									<select data-placeholder="Select a province" id="province" name="province_id" class="form-control map_form" required="">
+										<option value="0" data-value="">Select a City/Province</option>
 										@foreach ($provinces as $key => $province)
 											<option data-en-title="{{$province}}" value="{{$key}}" data-value="tboung-khmum">{{$province}}</option>
 										@endforeach
@@ -184,8 +184,9 @@
 							<div class="form-group">
 								<label for="district" class="col control-label">Khan/District <i class="red">*</i></label>
 								<div class="col col-3 form-input">
-								<select data-placeholder="Select a district" id="district" name="district" class="form-control map_form" required="" disabled="">
-									<option value="" data-value="">Select a Khan/District</option>
+								<select data-placeholder="Select a district" id="district" name="district_id" class="form-control map_form" required="" disabled="">
+									<option value="0" data-value="">Select a Khan/District</option>
+
 								</select>
 								</div>
 							</div>
@@ -193,17 +194,12 @@
 							<div class="form-group">
 								<label for="commune" class="col control-label">Sangkat/Commune <i class="red">*</i></label>
 								<div class="col col-3 form-input">
-									<select data-placeholder="Select a commune" id="commune" name="commune" class="form-control map_form" required="" disabled="">
-										<option value="" data-value="">Select a Sangkat/Commune</option>
+									<select data-placeholder="Select a commune" id="commune" name="commune_id" class="form-control map_form" required="" disabled="">
+										<option value="0" data-value="">Select a Sangkat/Commune</option>
+
 									</select>
 								</div>
 							</div>
-	{{-- 						<script type="text/javascript">
-								$('document').ready(function(){
-									$("#district").chained("#province");
-									$("#commune").chained("#district");	               						
-								});
-							</script> --}}
 							{{-- location Detail --}}
 							<div class="form-group">
 								<label for="address" class="col control-label">Location Details<i class="red">*</i></label>

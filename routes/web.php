@@ -49,6 +49,7 @@ Route::post('dynamic_dependent/fetch', 'DynamicDependent@fetch')->name('dynamicd
 
 Route::get('/student', 'SchoolController@index');
 Route::get('students/get/{id}', 'SchoolController@getStudents');
+
 Route::get('dropdownlist','DropdownController@index');
 Route::get('get-state-list','DropdownController@getStateList');
 Route::get('get-city-list','DropdownController@getCityList');
@@ -57,3 +58,6 @@ Route::get('get-city-list','DropdownController@getCityList');
 // Route::get('upload','FreePostController@getIndex');	
 Route::get('preview','FreePostController@getPreview');
 Route::post('action','FreePostController@postAction');
+
+Route::get('get-district-list','FreePostController@getDistrictList');
+Route::get('get-commune-list','FreePostController@getCommuneList');
