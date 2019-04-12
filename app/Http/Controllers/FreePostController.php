@@ -52,6 +52,12 @@ class FreePostController extends Controller
       return redirect()->back();
   }
   
+  public function showProperties($id)
+  {
+    $property = Property::findOrFail($id);
+    return view('freeads.show',compact('property'));
+  }
+
   public function imageView()
   {
     return view('plupload.create');

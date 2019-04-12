@@ -50,7 +50,6 @@ Route::get('dropdownlist','DropdownController@index');
 Route::get('get-state-list','DropdownController@getStateList');
 Route::get('get-city-list','DropdownController@getCityList');
 
-
 // Route::get('upload','FreePostController@getIndex');	
 Route::get('preview','FreePostController@getPreview');
 Route::post('action','FreePostController@postAction');
@@ -59,5 +58,6 @@ Route::post('action','FreePostController@postAction');
 	Route::get('post','FreePostController@index')->name('post.index');
 	Route::get('post/{post_id}/create','FreePostController@create')->name('post.create');
 	Route::post('post','FreePostController@saveProperties')->name('post.store');
+	Route::get('post/showProperties/{id}','FreePostController@showProperties')->name('post.show');
 	Route::get('get-district-list','FreePostController@getDistrictList');
 	Route::get('get-commune-list','FreePostController@getCommuneList');

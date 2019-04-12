@@ -17,7 +17,7 @@
 	<link  href="{{asset('assets/css/main.css')}}" rel="stylesheet" type="text/css">
 	<link  href="{{asset('assets/css/style.css')}}" rel="stylesheet" type="text/css">
 	<link  href="https://unpkg.com/ionicons@4.3.0/dist/css/ionicons.min.css">
-	<link  href="{{asset('assets/css/post.css')}}" rel="stylesheet" type="text/css">
+
 	<style type="text/css">
 		body {
 			min-width: 1080px;
