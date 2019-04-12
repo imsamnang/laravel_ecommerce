@@ -27,7 +27,7 @@
 </head>
 <body>
 
-	<header id="header" class="bg-white border-bottom">
+{{-- 	<header id="header" class="bg-white border-bottom">
 		<div class="my-container header-content">
 			<nav class="navbar row">
 				<a href="#" class="navbar-brand"><img src="https://www.khmer24.com/khmer24-reform21/template/img/khmer24.gif" alt="Khmer24"></a>
@@ -198,7 +198,7 @@
 				</form>
 			</div>
 		</div>
-	</header>
+	</header> --}}
 
 	{{-- post form --}}
 		{{-- @include('products.post') --}}

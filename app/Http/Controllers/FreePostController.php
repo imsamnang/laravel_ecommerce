@@ -25,6 +25,11 @@ class FreePostController extends Controller
   	return view('freeads.create',compact('subcategory','category','provinces'));
   }
 
+  public function savePost(Request $request)
+  {
+    return $request->all();
+  }
+  
   public function imageView()
   {
     return view('plupload.create');

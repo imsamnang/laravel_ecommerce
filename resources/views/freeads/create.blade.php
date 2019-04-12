@@ -1,7 +1,7 @@
 @extends('layouts.backend.khmer24_layout')
 
 @push('css')
-	{{-- expr --}}
+	<link rel="stylesheet" href="{{asset('css/upload.css')}}">
 @endpush
 
 @section('content')
@@ -87,7 +87,7 @@
 @endsection
 
 @push('js')
-
+<script src="{{asset('js/upload.js')}}"></script>
 {{-- upload image --}}
 {{-- <script type="text/javascript">
 	var uploader = new plupload.Uploader({

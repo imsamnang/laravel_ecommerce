@@ -37,10 +37,6 @@ Route::get('/dashboard', 'Admin\DashboardController@index')->name('dashboard');
 Route::resource('admin/category', 'Admin\\CategoryController');
 Route::resource('admin/product', 'Admin\\ProductController');
 
-
-Route::get('post','FreePostController@index')->name('post.index');
-Route::get('post/{post_id}/create','FreePostController@create')->name('post.create');
-
 Route::get('image-view','FreePostController@imageView')->name('image.view');
 Route::post('image-submit','FreePostController@imageSubmit')->name('image.submit');
 
@@ -59,5 +55,9 @@ Route::get('get-city-list','DropdownController@getCityList');
 Route::get('preview','FreePostController@getPreview');
 Route::post('action','FreePostController@postAction');
 
-Route::get('get-district-list','FreePostController@getDistrictList');
-Route::get('get-commune-list','FreePostController@getCommuneList');
+// freeads post route
+	Route::get('post','FreePostController@index')->name('post.index');
+	Route::get('post/{post_id}/create','FreePostController@create')->name('post.create');
+	Route::post('post','FreePostController@savePost')->name('post.store');
+	Route::get('get-district-list','FreePostController@getDistrictList');
+	Route::get('get-commune-list','FreePostController@getCommuneList');

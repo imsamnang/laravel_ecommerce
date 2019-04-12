@@ -11,8 +11,7 @@
 
 		<div class="post_form p-3">
 			<div class="post_form">
-				<form action="#" id="form-post" class="form form-horizontal" method="post" accept-charset="utf-8" novalidate="novalidate" enctype="multipart/form-data">
-					<input type="hidden" name="csrf_test_name" id="csrf_test_name" value="{{csrf_field()}}">
+				<form action="{{route('post.store')}}" class="form form-horizontal" method="post" accept-charset="utf-8" enctype="multipart/form-data">
 					{{csrf_field()}}
 					<input type="hidden" name="category_id" value="{{$category->id}}">
 					<input type="hidden" value="sub_cate_id" name="{{$subcategory->id}}">
@@ -33,14 +32,14 @@
 					<div class="form-group">
 						<label for="ad_headline" class="col control-label">Title <span class="red">*</span></label>
 						<div class="col col-6 form-input">
-						<input id="ad_headline" class="form-control" type="text" name="ad_headline" value="" required="">
+						<input id="title" class="form-control" type="text" name="title" value="" required="">
 						</div>
 					</div>
 					{{-- Size --}}
 					<div class="form-group input-ad_year">
 						<label for="ad_year" class="col-sm-3 control-label">Size(m<sup>2</sup>)</label>
 						<div class="form-input col-sm-6 col-lg-3">
-							<input type="text" name="ad_year" value="" id="ad_year" class="form-control  number " />
+							<input type="text" name="size" value="" id="size" class="form-control  number " />
 						</div>
 					</div>
 					{{-- Price --}}
@@ -51,7 +50,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text" id="inputGroupPrepend_ad_price">$</span>
 								</div>
-								<input type="number" min="1" name="ad_price" id="ad_price" class="form-control  number " required aria-describedby="basic-addon1" value="">
+								<input type="number" min="1" name="price" id="price" class="form-control  number " required aria-describedby="basic-addon1" value="">
 							</div>
 						</div>
 					</div>
@@ -59,78 +58,27 @@
 					<div class="form-group">
 						<label for="ad_text" class="col control-label">Description <span class="red">*</span></label>
 						<div class="col col-8 form-input">
-						<textarea name="ad_text" id="ad_text" class="required form-control" rows="10"></textarea>
+						<textarea name="description" id="description" class="required form-control" rows="4"></textarea>
 						</div>
 					</div>
 					{{-- Photo --}}
 					<div class="form-group">
 						<label for="ad_text" class="col control-label">Ad Photos <i class="red">*</i></label>
-{{-- 						<div id="plupload" class="col-8">
+						<div id="plupload" class="col-8">
 							<div class="row plupload_block">
 								<div class="pl fleft col-12">
-								<span class="drop_file_hear"></span>
-									<div id="multi-upload">
-									<div id="console"></div>
-										<ul class="list-image list-unstyled">
-											<li>
-												<div id="item-1" class="item">
-													<a href="javascript:;" class="btn-browse" id="browse-1">Add Image</a>
-												</div>
-											</li>
-											<li>
-												<div id="item-2" class="item">
-													<a href="javascript:;" class="btn-browse" id="browse-2">Add Image</a>
-												</div>
-											</li>
-											<li>
-												<div id="item-3" class="item">
-													<a href="javascript:;" class="btn-browse" id="browse-3">Add Image</a>
-												</div>
-											</li>
-											<li>
-												<div id="item-4" class="item">
-													<a href="javascript:;" class="btn-browse" id="browse-4">Add Image</a>
-												</div>
-											</li>
-											<li>
-												<div id="item-5" class="item">
-													<a href="javascript:;" class="btn-browse" id="browse-5">Add Image</a>
-												</div>
-											</li>
-											<li>
-												<div id="item-6" class="item">
-													<a href="javascript:;" class="btn-browse" id="browse-6">Add Image</a>
-												</div>
-											</li>
-											<li>
-												<div id="item-7" class="item">
-													<a href="javascript:;" class="btn-browse" id="browse-7">Add Image</a>
-												</div>
-											</li>
-											<li>
-												<div id="item-8" class="item">
-													<a href="javascript:;" class="btn-browse" id="browse-8">Add Image</a>
-												</div>
-											</li>
-										</ul>
-										<div class="drop_box" id="drop-image">
-											<span class="image_placeholder"></span>
-											<p>Drop your photo hear.</p>
-										</div>
-										<div class="total_status">
-											<span class="current_uploads" id="current_uploads">0</span> of 
-											<span class="total">8</span>
-										</div>
+								<!-- Code Begins -->
+									<input style="display:none;" type="file" name="vpb-data-file[]" id="vpb-data-file" onchange="vpb_image_preview(this)" multiple="multiple" />
+									<div align="center" style="width:300px;">
+										<!-- Browse File Button -->
+										<span class="vpb_browse_file" onclick="document.getElementById('vpb-data-file').click();"></span>
 									</div>
 								</div>
+								<div style="width:710px; margin-top:5px;" align="center" id="vpb-display-preview"></div>
+							<!-- Code Begins -->
 							</div>
 							<div class="clear"></div>
-							<div style="display:none;">
-								<input type="hidden" id="count" value="1">
-								<input type="hidden" id="csrf" value="{{csrf_field()}}">
-								<input type="hidden" id="browser" value="">
-							</div>
-						</div> --}}
+						</div>
 					</div>
 					{{-- Name --}}
 					<div class="form-group">
@@ -208,17 +156,6 @@
 								</div>
 							</div>
 						</div>
-						<div class="form-group">
-							<div class="map_view col-12">
-								<div class="map_box hidden" id="ad_map">
-									<a id="find_location" href="#">
-									<span class="icon icon-my-location"></span> Find My Location</a>
-									<span id="map_loading" class="loading" style="display: none;"></span>
-								</div>
-								<input type="hidden" id="map_lat" name="map_lat" value="">
-								<input type="hidden" id="map_lng" name="map_lng" value="">
-							</div>
-						</div>
 					</div>
 					{{-- save contact information --}}
 					<div class="form-group">
@@ -234,7 +171,8 @@
 					{{-- submit button --}}
 					<div class="form-group submit_box">
 						<div class="col-sm-offset-2 col col-3 btn_submit">
-							<input type="submit" name="save_ad" value="Submit" class="btn btn-lg btnsavead btn-warning btn-block">
+							<input type="submit" value="Submit" class="btn btn-lg btnsavead btn-warning btn-block">
+							{{-- <button type="submit" class="btn btn-primary">Submit</button> --}}
 						</div>
 					</div>
 				</form>
@@ -253,12 +191,9 @@
 				</div>
 			</div>
 		</div>
+
 	</div>
-
-	<input type="hidden" value="http://builder.test/" id="base_url" />
-	<input type="hidden" value="http://builder.test/img/" id="template_path" />
-
-	<div class="modal fade" id="account-question" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+{{-- 	<div class="modal fade" id="account-question" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="account-question-box">
@@ -285,6 +220,6 @@
 					</div>
 				</div>
 			</div>
-	</div>
+	</div> --}}
 
 	<a href="#totop" id="totop"><i class="icon-up"></i></a>
