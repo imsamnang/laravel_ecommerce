@@ -1,6 +1,6 @@
 
  <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
 	<meta charset="UTF-8">
 	<link rel="shortcut icon" href="{{asset('assets/img/favicon.ico')}}">
@@ -20,7 +20,7 @@
 	<link  href="{{asset('assets/css/post.css')}}" rel="stylesheet" type="text/css">
 	<style type="text/css">
 		body {
-			min-width: 1090px;
+			min-width: 1080px;
 		}
 	</style>
 	@stack('css')
@@ -212,10 +212,10 @@
 	{{-- end footer --}}
 	
 	<div class="fix-feedback">
-	<a href="https://www.khmer24.com/en/feedback" class="btn btn-primary btn-sm">Feedback</a>
+		<a href="https://www.tinhtoday.com/feedback" class="btn btn-primary btn-sm">Feedback</a>
 	</div>
 
-
 	@stack('js')
+
 </body>
 </html>

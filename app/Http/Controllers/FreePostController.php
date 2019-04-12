@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Model\Category;
 use App\Model\Commune;
 use App\Model\District;
+use App\Model\Property;
 use App\Model\PropertyGallery;
 use App\Model\Province;
 use Illuminate\Http\Request;
@@ -25,9 +26,30 @@ class FreePostController extends Controller
   	return view('freeads.create',compact('subcategory','category','provinces'));
   }
 
-  public function savePost(Request $request)
+  public function saveProperties(Request $request)
   {
-    return $request->all();
+    // return $request->all();
+    $property = new Property();
+    $property->user_id = auth()->user()->id;
+    $property->category_id = $request->category_id;
+    $property->parent_id = $request->parent_id;
+    $property->title = $request->title;
+    $property->size = $request->size;
+    $property->price = $request->price;
+    $property->description = $request->description;
+    $property->name = $request->name;
+    $property->phone1 = $request->phone_1;
+    $property->phone2 = $request->phone_2;
+    $property->phone3 = $request->phone_3;
+    $property->email = $request->email;
+    $property->province = $request->province_id;
+    $property->district = $request->district_id;
+    $property->commune = $request->commune_id;
+    $property->location = $request->location;
+    if($property->save()){
+      $property->imageGalleryUpload('imageGalleries',new PropertyGallery(),'property/galleries/',$property->id,'property_id');
+    }
+      return redirect()->back();
   }
   
   public function imageView()

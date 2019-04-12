@@ -14,7 +14,7 @@
 				<form action="{{route('post.store')}}" class="form form-horizontal" method="post" accept-charset="utf-8" enctype="multipart/form-data">
 					{{csrf_field()}}
 					<input type="hidden" name="category_id" value="{{$category->id}}">
-					<input type="hidden" value="sub_cate_id" name="{{$subcategory->id}}">
+					<input type="hidden" name="parent_id" value="{{$subcategory->id}}" >
 					{{-- category --}}
 					<div class="form-group">
 						<label for="title" class="col control-label">Category</label>
@@ -68,7 +68,7 @@
 							<div class="row plupload_block">
 								<div class="pl fleft col-12">
 								<!-- Code Begins -->
-									<input style="display:none;" type="file" name="vpb-data-file[]" id="vpb-data-file" onchange="vpb_image_preview(this)" multiple="multiple" />
+									<input style="display:none;" type="file" name="imageGalleries[]" id="vpb-data-file" onchange="vpb_image_preview(this)" multiple="multiple" />
 									<div align="center" style="width:300px;">
 										<!-- Browse File Button -->
 										<span class="vpb_browse_file" onclick="document.getElementById('vpb-data-file').click();"></span>
@@ -92,15 +92,15 @@
 						<label for="phone" class="col control-label">Phone <span class="red">*</span></label>
 						<div class="col col-lg-4 phone">
 							<div class="phone-1 form-input">
-								<input type="tel" name="phone-1" value="" id="phone-1" class="form-control number" maxlength="10" placeholder="Tel 1">
+								<input type="tel" name="phone_1" value="" id="phone_1" class="form-control number" maxlength="10" placeholder="Tel 1">
 								<a href="javascript:void(0)" class="add_phone" data-id="add"><i class="icon-plus-full"></i></a>
 							</div>
 							<div class="phone-2 form-input  d-none">
-								<input type="tel" name="phone-2" value="" id="phone-2" class="form-control number" maxlength="10" placeholder="Tel 2">
+								<input type="tel" name="phone_2" value="" id="phone_2" class="form-control number" maxlength="10" placeholder="Tel 2">
 								<a href="javascript:void(0)" class="delete_phone" data-id="phone-2"><i class="icon-remove"></i></a>
 							</div>
 							<div class="phone-3 form-input d-none">
-								<input type="tel" name="phone-3" value="" id="phone-3" class="form-control number" maxlength="10" placeholder="Tel 3">
+								<input type="tel" name="phone_3" value="" id="phone_3" class="form-control number" maxlength="10" placeholder="Tel 3">
 								<a href="javascript:void(0)" class="delete_phone" data-id="phone-3"><i class="icon-remove"></i></a>
 							</div>
 						</div>
@@ -152,7 +152,7 @@
 							<div class="form-group">
 								<label for="address" class="col control-label">Location Details<i class="red">*</i></label>
 								<div class="col col-8 form-input">
-								<textarea name="address" id="address" class="form-control" required=""></textarea>
+								<textarea name="location" id="location" class="form-control" required=""></textarea>
 								</div>
 							</div>
 						</div>
@@ -193,6 +193,7 @@
 		</div>
 
 	</div>
+
 {{-- 	<div class="modal fade" id="account-question" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">

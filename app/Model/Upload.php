@@ -52,14 +52,14 @@ class Upload extends Model
     }
   }
 
-  public static function imageGalleryUpload($filename,$ObjModel, $path = null,$product_id)
+  public static function imageGalleryUpload($filename,$ObjModel, $path = null,$product_id,$fieldID)
   {
     if(request()->hasFile($filename)){
       $dir = 'uploads/' . $path .'/';
       foreach (request()->$filename as $file) {
         $filename = rand(). '.' . $file->getClientOriginalExtension();
         $ObjModel = new $ObjModel;
-        $ObjModel->product_id = $product_id;
+        $ObjModel->$fieldID = $product_id;
         $ObjModel->gallery_image = $filename;
         if($ObjModel->save()){
           $file->move($dir,$filename);

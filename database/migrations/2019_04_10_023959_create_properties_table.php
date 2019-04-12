@@ -17,9 +17,10 @@ class CreatePropertiesTable extends Migration
       $table->string('size');
       $table->float('price');
       $table->text('description')->nullable();
-      $table->integer('gallery_id')->unsigned();
       $table->string('name');
-      $table->string('phone');
+      $table->string('phone1');
+      $table->string('phone2')->nullable();
+      $table->string('phone3')->nullable();
       $table->string('email')->nullable();
       $table->string('province');
       $table->string('district');

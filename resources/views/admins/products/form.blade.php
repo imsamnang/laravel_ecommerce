@@ -51,7 +51,8 @@
             <label><input name="is_active" type="radio" value="1" {{ (isset($product) && 1 == $product->is_active) ? 'checked' : '' }}> Yes</label>
         </div>
         <div class="radio">
-            <label><input name="is_active" type="radio" value="0" @if (isset($product)) {{ (0 == $product->is_active) ? 'checked' : '' }} @else {{ 'checked' }} @endif> No</label>
+            <label>
+              <input name="is_active" type="radio" value="0" @if (isset($product)) {{ (0 == $product->is_active) ? 'checked' : '' }} @else {{ 'checked' }} @endif> No</label>
         </div>
             {!! $errors->first('is_active', '<p class="help-block">:message</p>') !!}
         </div>

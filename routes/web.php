@@ -58,6 +58,6 @@ Route::post('action','FreePostController@postAction');
 // freeads post route
 	Route::get('post','FreePostController@index')->name('post.index');
 	Route::get('post/{post_id}/create','FreePostController@create')->name('post.create');
-	Route::post('post','FreePostController@savePost')->name('post.store');
+	Route::post('post','FreePostController@saveProperties')->name('post.store');
 	Route::get('get-district-list','FreePostController@getDistrictList');
 	Route::get('get-commune-list','FreePostController@getCommuneList');
