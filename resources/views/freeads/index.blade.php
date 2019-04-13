@@ -1,7 +1,7 @@
 @extends('layouts.backend.khmer24_layout')
 
 @push('css')
-	
+	<link  href="{{asset('assets/css/post.css')}}" rel="stylesheet" type="text/css">
 @endpush
 
 @section('content')

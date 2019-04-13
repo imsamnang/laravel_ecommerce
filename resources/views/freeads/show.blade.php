@@ -117,7 +117,7 @@
 										</li>
 										<li>
 											<span class="title">Locations :</span>
-											<span class="value">{{$property->province}}</span>
+											<span class="value">{{$property->province->name_en}}</span>
 										</li>
 										<li>
 											<span class="title">Posted On :</span>
@@ -150,23 +150,23 @@
 										</div>
 									</li>
 								</ul>
-								<p class="post-description">>{{$property->title}}<br />
+								<p class="post-description">{{$property->title}}<br />
 								<br />
-								- តំលៃ: 1,300 ដុល្លា/ម៉ែត្រការ៉េ <br />
-								- សង្កាត់: ព្រែកហូ<br />
-								- ទំហំដី: 7,780 ម៉ែត្រការ៉េ <br />
-								- ពិពណ៌នាសង្ខេប: វាគឺជាទីតាំងដ៏ធំនិងមានទីតាំងល្អសម្រាប់ធ្វើអាជីវកម្ម, រៀបចំសណ្ឋាគារ, អាផាតមិន, ខុនដូឬរោងចក្រ។<br />
-								- ដែលមានទីតាំងនៅកាច់ជ្រុងផ្លូវសម្តេចតេជោហ៊ុនសែន (60 ម៉ែត) និងផ្លូវជាតិលេខ 2 (ជិះ១៥នាទីពី ក្បាលថ្នល់) ។<br />
-								- Price: 1,300$ /m2<br />
-								- Sangkat: Prek Ho<br />
-								- Land size: 7,780m2<br />
-								- Description: It is so big and good location for business, Set up Hotel, Apartment ,Condo or Factory. <br />
-								- located on the corner of Samdech decho Hun Sen (60M) and National road #2 (15minute drive from kbalthnal). <br />
-								- 价格：1,300美元/平方米<br />
-								- 公社：Prek Ho<br />
-								- 土地面积：7,780平方米<br />
-								- 描述：它是如此之大和良好的位置 商务，设置酒店，公寓，公寓或 厂。<br />
-								- 位于Samdech Decho Hun Sen（60M）和国道＃2（距离kbalthnal 15分钟车程）的拐角处。</p>
+									- តំលៃ: 1,300 ដុល្លា/ម៉ែត្រការ៉េ <br />
+									- សង្កាត់: ព្រែកហូ<br />
+									- ទំហំដី: 7,780 ម៉ែត្រការ៉េ <br />
+									- ពិពណ៌នាសង្ខេប: វាគឺជាទីតាំងដ៏ធំនិងមានទីតាំងល្អសម្រាប់ធ្វើអាជីវកម្ម, រៀបចំសណ្ឋាគារ, អាផាតមិន, ខុនដូឬរោងចក្រ។<br />
+									- ដែលមានទីតាំងនៅកាច់ជ្រុងផ្លូវសម្តេចតេជោហ៊ុនសែន (60 ម៉ែត) និងផ្លូវជាតិលេខ 2 (ជិះ១៥នាទីពី ក្បាលថ្នល់) ។<br />
+									- Price: 1,300$ /m2<br />
+									- Sangkat: Prek Ho<br />
+									- Land size: 7,780m2<br />
+									- Description: It is so big and good location for business, Set up Hotel, Apartment ,Condo or Factory. <br />
+									- located on the corner of Samdech decho Hun Sen (60M) and National road #2 (15minute drive from kbalthnal). <br />
+									- 价格：1,300美元/平方米<br />
+									- 公社：Prek Ho<br />
+									- 土地面积：7,780平方米<br />
+									- 描述：它是如此之大和良好的位置 商务，设置酒店，公寓，公寓或 厂。<br />
+									- 位于Samdech Decho Hun Sen（60M）和国道＃2（距离kbalthnal 15分钟车程）的拐角处。</p>
 							</div>
 							<div class="p-3 item-contact">
 								<div class="item-mention">

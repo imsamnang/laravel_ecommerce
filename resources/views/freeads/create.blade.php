@@ -9,75 +9,7 @@
 
 	<script type="text/javascript">
 	  $(document).ready(function() {
-			jQuery.validator.addMethod("phone", function(value, element) {
-				if((value.charAt(0)==0 && value.charAt(1)!=0) || value.length==0 ){
-					return true;
-				}
-				return false;
-			}, "Invalid phone number.");
-	    // Validate
-	    $("#form-post").validate({	        
-	    	rules:
-	    	{
-	    		ad_headline:{required:true, maxlength:101},
-	    		ad_text:{required:true, maxlength:10000},
-	    		name:{required:true, minlength:3, maxlength:50},
-	    		'phone-1':{required:true, minlength:9, maxlength:10,number: true,phone:true},
-	    		'phone-2':{minlength:9, maxlength:10,number: true,phone:true},
-	    		'phone-3':{minlength:9, maxlength:10,number: true,phone:true},
-	    		ad_kindof:{required:true},
-	    	},
-	    	errorClass:"error invalid-feedback",			
-	    	highlight: function(label) {
-	    		$(label).addClass('error');
-	    		$(label).closest('.form-group').removeClass('has-success has-feedback').addClass('has-error has-feedback')
-	    		$(label).closest('.form-group').find('label.error').remove();
-	    		$(label).closest('.form-group input').after('<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span><span id="inputError2Status" class="sr-only">(error)</span>');
-	    	},
 
-	    	success: function(label,element) {
-	    		$(label).removeClass('error');
-	    		$(element).removeClass('is-invalid');
-	    		$(label).closest('.form-group').removeClass('has-error has-feedback').addClass('has-success has-feedback');
-	    		$(label).closest('.form-group').find('label.error').remove();
-	    		label.after('<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span><span id="inputSuccess2Status" class="sr-only">(success)</span>');
-	    		label.remove();
-	    		$('.has-success').find('.checkbox').css('margin-bottom','0');
-	    	},
-
-	    	errorPlacement: function(error, element) {
-	    		if(error.text()) {
-	    			element.addClass('is-invalid');
-	    			element.closest('.form-input').append(error);
-	    		}
-	    	},  
-			// focusInvalid: false,
-			invalidHandler: function(form, validator) {
-				if (!validator.numberOfInvalids())
-					return;
-
-				$('html, body').animate({
-					scrollTop: $(validator.errorList[0].element).offset().top
-				}, 700);
-			},
-			submitHandler: function(form) {
-					
-					$("#form-post input[type='submit']").attr('disabled','disabled').val('Saving...').css({"background-color": "#dedede", "border": "none" });
-					
-					$.post($("#form-post").attr('action'), $("#form-post").serialize(), function(data) {
-						if(data.status == 1 || data.status == '1') {
-							if(data.is_logged_in == 1 || data.is_logged_in == '1') {
-								window.location = 'https://www.khmer24.com/en/manage-ads.html'; 
-							} else {
-								$('#account-question').modal('show');
-		          }
-		      }else{
-		      	$("#form-post input[type='submit']").removeAttr('disabled').val('Submit').removeAttr('style');
-		      	alert(data.info);
-		      }
-		  },'json');
-				}
-			});		
 		});
 	</script>
 

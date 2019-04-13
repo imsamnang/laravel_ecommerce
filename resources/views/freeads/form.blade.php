@@ -11,7 +11,7 @@
 
 		<div class="post_form p-3">
 			<div class="post_form">
-				<form action="{{route('post.store')}}" class="form form-horizontal" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+				<form action="{{route('post.store')}}" class="form form-horizontal" method="post" accept-charset="utf-8" enctype="multipart/form-data" id="form_post">
 					{{csrf_field()}}
 					<input type="hidden" name="category_id" value="{{$category->id}}">
 					<input type="hidden" name="parent_id" value="{{$subcategory->id}}" >
@@ -37,9 +37,9 @@
 					</div>
 					{{-- Size --}}
 					<div class="form-group input-ad_year">
-						<label for="ad_year" class="col-sm-3 control-label">Size(m<sup>2</sup>)</label>
+						<label for="size" class="col-sm-3 control-label">Size(m<sup>2</sup>)</label>
 						<div class="form-input col-sm-6 col-lg-3">
-							<input type="text" name="size" value="" id="size" class="form-control  number " />
+							<input type="text" name="size" value="" id="size" class="form-control  number" />
 						</div>
 					</div>
 					{{-- Price --}}
@@ -58,7 +58,7 @@
 					<div class="form-group">
 						<label for="ad_text" class="col control-label">Description <span class="red">*</span></label>
 						<div class="col col-8 form-input">
-						<textarea name="description" id="description" class="required form-control" rows="4"></textarea>
+						<textarea name="description" id="description" class="required form-control" rows="4" required></textarea>
 						</div>
 					</div>
 					{{-- Photo --}}
@@ -92,7 +92,7 @@
 						<label for="phone" class="col control-label">Phone <span class="red">*</span></label>
 						<div class="col col-lg-4 phone">
 							<div class="phone-1 form-input">
-								<input type="tel" name="phone_1" value="" id="phone_1" class="form-control number" maxlength="10" placeholder="Tel 1">
+								<input type="tel" name="phone_1" value="" id="phone_1" class="form-control number" maxlength="10" placeholder="Tel 1" required>
 								<a href="javascript:void(0)" class="add_phone" data-id="add"><i class="icon-plus-full"></i></a>
 							</div>
 							<div class="phone-2 form-input  d-none">

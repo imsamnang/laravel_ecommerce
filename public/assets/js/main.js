@@ -13,13 +13,13 @@ $(document).ready(function function_name() {
 				$('#totop').hide();
 			}
 		});
-		function detectScrollTop() {
-			$('#totop').css('left',$('header .header-content').width()+$('header .header-content').offset().left+25);
-			$('#totop').css('right','auto');
-		}
-		detectScrollTop();
-		$( window ).resize(function() {
-		  detectScrollTop();
-		});
+		// function detectScrollTop() {
+		// 	$('#totop').css('left',$('header .header-content').width()+$('header .header-content').offset().left+25);
+		// 	$('#totop').css('right','auto');
+		// }
+		// detectScrollTop();
+		// $( window ).resize(function() {
+		//   detectScrollTop();
+		// });
 	}
 });

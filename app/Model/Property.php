@@ -25,4 +25,30 @@ class Property extends Eloquent
 		'commune',
 		'location',
 	];
+
+	public function province()
+	{
+		return $this->belongsTo(Province::class,'province_id','id');
+	}
+
+	public function district()
+	{
+		return $this->belongsTo(District::class,'district_id','id');
+	}
+
+	public function commune()
+	{
+		return $this->belongsTo(Commune::class,'commune_id','id');
+	}	
+
+	public function category()
+	{
+		return $this->belongsTo(Category::class,'category_id','id');
+	}
+
+	public function parent()
+	{
+		return $this->belongsTo(Category::class,'parent_id','id');
+	}	
+
 }

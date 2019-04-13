@@ -12,6 +12,11 @@ use Illuminate\Http\Request;
 
 class FreePostController extends Controller
 {
+  public function __construct()
+  {
+    $this->middleware('auth');
+  }
+
   public function index()
   {
   	$categories = Category::where(['parent_id'=>0])->get();
@@ -28,7 +33,6 @@ class FreePostController extends Controller
 
   public function saveProperties(Request $request)
   {
-    // return $request->all();
     $property = new Property();
     $property->user_id = auth()->user()->id;
     $property->category_id = $request->category_id;
@@ -71,8 +75,8 @@ class FreePostController extends Controller
   }
 
   // public function getIndex(){
-  //   $images = Image::orderBy('id','desc')->get();
-  //   return view('admin.upload.khmer24',['images' => $images]);
+    //   $images = Image::orderBy('id','desc')->get();
+    //   return view('admin.upload.khmer24',['images' => $images]);
   // }
 
   public function getPreview(){

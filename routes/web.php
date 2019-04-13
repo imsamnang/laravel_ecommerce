@@ -51,8 +51,8 @@ Route::get('get-state-list','DropdownController@getStateList');
 Route::get('get-city-list','DropdownController@getCityList');
 
 // Route::get('upload','FreePostController@getIndex');	
-Route::get('preview','FreePostController@getPreview');
-Route::post('action','FreePostController@postAction');
+	Route::get('preview','FreePostController@getPreview');
+	Route::post('action','FreePostController@postAction');
 
 // freeads post route
 	Route::get('post','FreePostController@index')->name('post.index');
