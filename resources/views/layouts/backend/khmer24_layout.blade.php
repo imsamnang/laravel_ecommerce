@@ -17,7 +17,6 @@
 	<link  href="{{asset('assets/css/main.css')}}" rel="stylesheet" type="text/css">
 	<link  href="{{asset('assets/css/style.css')}}" rel="stylesheet" type="text/css">
 	<link  href="https://unpkg.com/ionicons@4.3.0/dist/css/ionicons.min.css">
-
 	<style type="text/css">
 		body {
 			min-width: 1080px;
@@ -200,9 +199,6 @@
 		</div>
 	</header> --}}
 
-	{{-- post form --}}
-		{{-- @include('products.post') --}}
-	{{-- end post form --}}
 	@yield('content')
 
 	<a href="#totop" id="totop"><i class="icon-up"></i></a>

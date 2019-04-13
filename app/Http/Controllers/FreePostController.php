@@ -62,6 +62,19 @@ class FreePostController extends Controller
     return view('freeads.show',compact('property'));
   }
 
+  public function listProperties()
+  {
+    $properties = Property::where('user_id',auth()->user()->id)
+                           ->orderBy('created_at','desc')
+                           ->get();
+    return view('freeads.showAllProperties',compact('properties'));
+  }
+
+  public function allProperties()
+  {
+    return view('freeads.all_properties');
+  }
+
   public function imageView()
   {
     return view('plupload.create');

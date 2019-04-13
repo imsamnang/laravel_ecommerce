@@ -59,5 +59,8 @@ Route::get('get-city-list','DropdownController@getCityList');
 	Route::get('post/{post_id}/create','FreePostController@create')->name('post.create');
 	Route::post('post','FreePostController@saveProperties')->name('post.store');
 	Route::get('post/showProperties/{id}','FreePostController@showProperties')->name('post.show');
+	Route::get('post/list','FreePostController@listProperties')->name('post.showall');
+	Route::get('post/allproperties','FreePostController@allProperties')->name('post.allProperties');
+
 	Route::get('get-district-list','FreePostController@getDistrictList');
 	Route::get('get-commune-list','FreePostController@getCommuneList');
