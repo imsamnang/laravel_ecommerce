@@ -71,12 +71,23 @@
 								<div class="pl fleft col-12">
 								<!-- Code Begins -->
 									<input style="display:none;" type="file" name="imageGalleries[]" id="vpb-data-file" onchange="vpb_image_preview(this)" multiple="multiple" />
-									<div align="center" style="width:300px;">										
+									<div align="center" style="width:300px;">
 										<!-- Browse File Button -->
 										<span class="vpb_browse_file" onclick="document.getElementById('vpb-data-file').click();"></span>
 									</div>
 								</div>
-								<div style="width:710px; margin-top:5px;" align="center" id="vpb-display-preview"></div>
+								<div style="width:710px; margin-top:5px;" align="center" id="vpb-display-preview">
+									@if (isset($images))
+										@foreach ($images as $image)
+			            		<div id="selector_{{$image->id}}" class="vpb_wrapper">
+						            <img class="vpb_image_style" class="img-thumbnail" src="{{asset('uploads/property/galleries/'.$image->gallery_image)}}"
+						            alt="{{$image->gallery_image}}" /><br /> 
+						            <a style="cursor:pointer;padding-top:5px;" title="Click here to remove" 
+						            onclick="vpb_remove_selected()">Remove</a>
+			            		</div>
+										@endforeach
+									@endif
+								</div>
 							<!-- Code Begins -->
 							</div>
 							<div class="clear"></div>
