@@ -9,7 +9,8 @@
 
 	<script type="text/javascript">
 	  $(document).ready(function() {
-
+	  	$("#district" ).prop( "disabled", false );
+	  	$("#commune" ).prop( "disabled", false );
 		});
 	</script>
 
@@ -21,40 +22,39 @@
 
 @push('js')
 <script src="{{asset('js/upload.js')}}"></script>
-
 <script type="text/javascript">
 	$('document').ready(function(){
+		vpb_image_preview('#vpb_browse_file');
 	// distrct get data by provice change
     $('#province').change(function(){
    	 	var provinceID = $(this).val();
       if(provinceID>=1){
-          $.ajax({
-             type:"GET",
-             url:"{{url('get-district-list')}}?province_id="+provinceID,
-             success:function(res){               
-              if(res){
-              		// $("#district").removeAttr('disabled');
-              		$("#district" ).prop( "disabled", false );
-                  $("#district").empty();
-                  $("#district").append('<option value="0" data-value="">Select a Khan/District</option>');
-                  $.each(res,function(key,value){
-                      $("#district").append('<option value="'+key+'">'+value+'</option>');
-                  });
-             
-              }else{
-                 $("#district").empty();
-                 $("#district" ).prop( "disabled", true );
-                 $("#commune" ).prop( "disabled", true );
-              }
-             }
-          });
+        $.ajax({
+         type:"GET",
+         url:"{{url('get-district-list')}}?province_id="+provinceID,
+         success:function(res){               
+          if(res){
+          		// $("#district").removeAttr('disabled');
+          		$("#district" ).prop( "disabled", false );
+              $("#district").empty();
+              $("#district").append('<option value="0" data-value="">Select a Khan/District</option>');
+              $.each(res,function(key,value){
+                $("#district").append('<option value="'+key+'">'+value+'</option>');
+              });             
+          }else{
+            $("#district").empty();
+            $("#district" ).prop( "disabled", true );
+            $("#commune" ).prop( "disabled", true );
+          }
+         }
+        });
       }else{
-          $("#district").empty();
-          $("#commune").empty();
-          $("#district").append('<option value="0" data-value="">Select a Khan/District</option>');
-          $("#commune").append('<option value="0" data-value="">Select a Sangkat/Commune</option>');
-          $("#district" ).prop( "disabled", true );
-          $("#commune" ).prop( "disabled", true );
+        $("#district").empty();
+        $("#commune").empty();
+        $("#district").append('<option value="0" data-value="">Select a Khan/District</option>');
+        $("#commune").append('<option value="0" data-value="">Select a Sangkat/Commune</option>');
+        $("#district" ).prop( "disabled", true );
+        $("#commune" ).prop( "disabled", true );
       }      
     });
 	// commune get data by district change    

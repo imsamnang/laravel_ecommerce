@@ -56,6 +56,16 @@ class FreePostController extends Controller
       return redirect()->back();
   }
   
+  public function editProperties($id)
+  {
+    $property = Property::findOrFail($id);
+    $provinces = Province::pluck('name_en','id');
+    $subcategory = Category::where(['id'=>$property->parent_id])->first();
+    $category = Category::where('id',$property->category_id)->first();    
+    // return $category;
+    return view('freeads.edit',compact('property','subcategory','category','provinces'));
+  }
+
   public function showProperties($id)
   {
     $property = Property::findOrFail($id);
@@ -74,6 +84,11 @@ class FreePostController extends Controller
   {
     return view('freeads.all_properties');
   }
+
+
+
+
+
 
   public function imageView()
   {
