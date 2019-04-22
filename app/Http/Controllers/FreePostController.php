@@ -87,6 +87,13 @@ class FreePostController extends Controller
     return response()->json(['uploaded'=>'/uploads/freepost/'.$imageName]);
   }
 
+
+
+
+
+
+  
+
   // public function getIndex(){
     //   $images = Image::orderBy('id','desc')->get();
     //   return view('admin.upload.khmer24',['images' => $images]);
