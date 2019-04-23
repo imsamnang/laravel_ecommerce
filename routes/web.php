@@ -49,6 +49,7 @@ Route::resource('admin/activitylogs', 'Admin\\ActivityLogsController');
 // freeads post route
 	Route::get('get-district-list','FreePostController@getDistrictList');
 	Route::get('get-commune-list','FreePostController@getCommuneList');
+	
 	Route::get('post','FreePostController@index')->name('post.index');
 	Route::get('post/{post_id}/create','FreePostController@create')->name('post.create');
 	Route::post('post','FreePostController@saveProperties')->name('post.store');

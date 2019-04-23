@@ -46,9 +46,9 @@ class FreePostController extends Controller
     $property->phone2 = $request->phone_2;
     $property->phone3 = $request->phone_3;
     $property->email = $request->email;
-    $property->province = $request->province_id;
-    $property->district = $request->district_id;
-    $property->commune = $request->commune_id;
+    $property->province_id = $request->province_id;
+    $property->district_id = $request->district_id;
+    $property->commune_id = $request->commune_id;
     $property->location = $request->location;
     if($property->save()){
       $property->imageGalleryUpload('imageGalleries',new PropertyGallery(),'property/galleries/',$property->id,'property_id');
