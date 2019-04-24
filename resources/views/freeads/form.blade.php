@@ -95,68 +95,34 @@
 					</div>
 
 
-					<div class="col-md-12" style="border:solid 3px #e0e0e0;">
-						<div class="pddt20"></div>
-						<div class=" row">
-							<div class="col-md-8">
-								<div class="form-group">
-									<label class="col-sm-3 control-label">Feature</label>
-									<div class="col-sm-8">
-										<div class="fileupload fileupload-new" data-provides="fileupload">
-											<div class="input-append">
-												<div class="uneditable-input">
-													<i class="fa fa-file fileupload-exists"></i>
-													<span class="fileupload-preview"></span>
-												</div>
-												<span class="btn btn-default btn-file">
-													<span class="fileupload-exists">Change</span>
-													<span class="fileupload-new">Select file</span>
-													<input id="feature" name="feature" type="file" required="" />
-												</span>
-												<a href="#" class="btn btn-default fileupload-exists" data-dismiss="fileupload">Remove</a>
-											</div>
-											<label class="error" for="feature"></label>
-										</div>
-									</div>
+  <div class="row">
+    <div class="col-sm-8">
+		<div class="card">
+	    <div class="card-body">
+				<div class="form-group">
+					<label class="control-label">Images</label>
+					<div id='images-list' class="col-md-12">
+						@for ($i = 0; $i < 6; $i++)
+						{{-- <div class="fileupload fileupload-new" data-provides="fileupload"> --}}
+							<div class="input-append hidden">
+								<div class="uneditable-input">
+									<i class="fa fa-file fileupload-exists"></i>
+									<span class="fileupload-preview"></span>
 								</div>
-								<div class="form-group">
-									<div class="pddt20"></div>
-									<label class="col-sm-3 control-label">Images</label>
-									<div class="col-sm-8">
-										<div id='images-list'>
-											<?php for ($i = 0; $i < 6; $i++) { ?>
-											<div class="col-sm-4 images" id="image-<?php echo $i ?>">
-												<div class="fileupload fileupload-new" data-provides="fileupload">
-													<div class="input-append hidden">
-														<div class="uneditable-input">
-															<i class="fa fa-file fileupload-exists"></i>
-															<span class="fileupload-preview"></span>
-														</div>
-														<span class="btn btn-default btn-file">
-															<input id="input-img-image-<?php echo $i ?>" name="images[]" type="file"  onchange="loadFile(event,<?php echo $i ?>)"/>
-															<input  name="images_edit[]" type="text">
-														</span>
-													</div>
-													<div style="padding-bottom: 4px "></div>
-													<img class="img" id="img-image-<?php echo $i ?>" src="{{asset('img/image.png')}}"   />
-													<div style="padding-bottom: 4px "></div>
-													<label class="error" for="error-<?php echo $i ?>"></label>
-												</div>
-											</div>
-											<?php  } ?>
-										</div>
-										<div class="col-sm-4 hidden">
-											<a id="add-more-image" class="btn btn-default" style="background: #dedada"><i class="fa fa-plus fa-2x"></i><i class="fa fa-image fa-5x"></i> </a>
-										</div>
-									</div>
-								</div>
+								<span class="btn btn-default btn-file">
+									<input id="input-img-image-<?php echo $i ?>" name="images[]" type="file"  onchange="loadFile(event,<?php echo $i ?>)"/>
+									<input  name="images_edit[]" type="text">
+								</span>
 							</div>
-							<div class="col-md-4"  >
-								<img  id="img-feature" src="{{asset('img/products.png')}}" alt="feature" height="300" width="100%" />
-							</div>
-						</div>
+							<img class="img" id="img-image-{{$i}}" src="{{asset('img/image.png')}}" style="margin-right: 70px; padding-bottom: 4px"  />
+						{{-- </div> --}}
+						@endfor
 					</div>
-
+				</div>
+	    </div>
+	  </div>
+    </div>
+  </div>
 
 					{{-- Name --}}
 					<div class="form-group">
@@ -282,7 +248,6 @@
 			</div>
 		</div>
 
-	</div>
 
 {{-- 	<div class="modal fade" id="account-question" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog" role="document">
