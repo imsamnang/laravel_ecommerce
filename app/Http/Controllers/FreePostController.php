@@ -103,12 +103,6 @@ class FreePostController extends Controller
     $request->file->move(public_path('uploads/freepost/'),$imageName);
     return response()->json(['uploaded'=>'/uploads/freepost/'.$imageName]);
   }
-
-
-
-
-
-
   
 
   // public function getIndex(){
