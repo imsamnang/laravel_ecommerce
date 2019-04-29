@@ -64,7 +64,6 @@
 						</div>
 					</div>
 					{{-- Photo --}}
-
 					<div class="form-group">
 						<label for="ad_text" class="col control-label">Ad Photos <i class="red">*</i></label>
 						<div id="plupload" class="col-8">
@@ -96,6 +95,7 @@
 					</div>
 					
 					{{-- @include('freeads.khmer24_upload_form') --}}
+					@include('freeads.kimsan_upload_form')
 
 					{{-- Name --}}
 					<div class="form-group">
@@ -206,7 +206,7 @@
 					</div>
 				</form>
 				{{-- Posting Rule --}}
-				<div class="posting_rule">
+				<div class="posting_rule hidden">
 					<span class="rule_title"><i class="icon-warning"></i> Posting Rule</span>
 					<ul>
 						<li>No posting of same ad or similar ad to multiple categories and inappropriate category</li>
