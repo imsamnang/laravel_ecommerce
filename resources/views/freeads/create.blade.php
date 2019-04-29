@@ -16,22 +16,27 @@
         width: 100px;
         height: 100px;
         margin: 0.2em -0.7em 0 0;
-    }
-    .remove_img_preview {
-       position: relative;
-        bottom: 95px;
-        right: -80px;
-        background: #ffffff9e;
-        color: #b50707;
-        border-radius: 50px;
-        font-size: 15px;
-        padding: 0 5px 0;
-        text-align: center;
         cursor: pointer;
-        font-weight: bold;
     }
+
+    .img-responsive{
+    	cursor: pointer;
+    }
+		.remove_img_preview {
+		    position: relative;
+		    bottom: 41px;
+		    right: 10px;
+		    background: #ffffff9e;
+		    color: #b50707;
+		    border-radius: 50px;
+		    font-size: 15px;
+		    padding: 0 5px 0;
+		    text-align: center;
+		    cursor: pointer;
+		    font-weight: bold;
+		}
     .remove_img_preview:before {
-        content: "×";
+        content: "X";
     }
      .hidden{
         display: none;
@@ -125,6 +130,6 @@
 	  });
 	});
 </script>
-{{-- @include('freeads.script.kimsan') --}}
-@include('freeads.script.khmer24')
+@include('freeads.script.kimsan')
+{{-- @include('freeads.script.khmer24') --}}
 @endpush
