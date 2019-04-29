@@ -95,7 +95,7 @@
 						</div>
 					</div>
 					
-					@include('freeads.khmer24_upload_form')
+					{{-- @include('freeads.khmer24_upload_form') --}}
 
 					{{-- Name --}}
 					<div class="form-group">

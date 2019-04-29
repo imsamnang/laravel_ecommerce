@@ -125,6 +125,6 @@
 	  });
 	});
 </script>
-{{-- @include('freeads.script.kimsan') --}}
-@include('freeads.script.khmer24')
+@include('freeads.script.kimsan')
+{{-- @include('freeads.script.khmer24') --}}
 @endpush
