@@ -53,9 +53,10 @@ Route::resource('admin/activitylogs', 'Admin\\ActivityLogsController');
 	Route::get('post','FreePostController@index')->name('post.index');
 	Route::get('post/{post_id}/create','FreePostController@create')->name('post.create');
 	Route::post('post','FreePostController@saveProperties')->name('post.store');
-	Route::get('post/properties_edit/{id}','FreePostController@editProperties')->name('post.edit');
-	Route::get('post/properties_detail/{id}','FreePostController@showProperties')->name('post.show');
-
+	Route::get('post/{id}/properties_edit','FreePostController@editProperties')->name('post.edit');
+	Route::put('post/{id}/update','FreePostController@updateProperties')->name('post.update');
+	Route::delete('post/{id}/destroy','FreePostController@deleteProperties')->name('post.destroy');
+	Route::get('post/{id}/properties_detail','FreePostController@showProperties')->name('post.show');
 	Route::get('post/list_by_category','FreePostController@listProperties')->name('post.by_category');
 	Route::get('post/allproperties','FreePostController@allProperties')->name('post.allProperties');
 

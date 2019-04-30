@@ -1,18 +1,4 @@
-	<div class="post_form bg-white rounded border my_content">
-		<div class="header p-3">
-			<h1 class="title">POST FREE AD</h1>
-			<div class="step">
-				<ul class="list-unstyled">
-				<li class="active"><span class="text"><i>1</i> Choose a category</span></li>
-				<li class="active"><span class="text"><i>2</i> Fill Description</span></li>
-				</ul>
-			</div>
-		</div>
 
-		<div class="post_form p-3">
-			<div class="post_form">
-				<form action="{{route('post.store')}}" class="form form-horizontal" method="post" accept-charset="utf-8" enctype="multipart/form-data" id="form_post">
-					{{csrf_field()}}
 					<input type="hidden" name="category_id" value="{{$category->id}}">
 					<input type="hidden" name="parent_id" value="{{$subcategory->id}}" >
 					{{-- category --}}
@@ -95,7 +81,7 @@
 					</div>
 					
 					{{-- @include('freeads.khmer24_upload_form') --}}
-					@include('freeads.kimsan_upload_form')
+					{{-- @include('freeads.kimsan_upload_form') --}}
 
 					{{-- Name --}}
 					<div class="form-group">
