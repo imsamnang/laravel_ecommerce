@@ -469,6 +469,7 @@ class ComposerStaticInit8b3cc091b9e09392a1380cd213ea7934
     );
 
     public static $classMap = array (
+        'App\\Admin' => __DIR__ . '/../..' . '/app/Model/Admin.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Admin\\ActivityLogsController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/ActivityLogsController.php',
@@ -514,6 +515,7 @@ class ComposerStaticInit8b3cc091b9e09392a1380cd213ea7934
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
+        'App\\Writer' => __DIR__ . '/../..' . '/app/Model/Writer.php',
         'Appzcoder\\CrudGenerator\\Commands\\CrudApiCommand' => __DIR__ . '/..' . '/appzcoder/crud-generator/src/Commands/CrudApiCommand.php',
         'Appzcoder\\CrudGenerator\\Commands\\CrudApiControllerCommand' => __DIR__ . '/..' . '/appzcoder/crud-generator/src/Commands/CrudApiControllerCommand.php',
         'Appzcoder\\CrudGenerator\\Commands\\CrudCommand' => __DIR__ . '/..' . '/appzcoder/crud-generator/src/Commands/CrudCommand.php',

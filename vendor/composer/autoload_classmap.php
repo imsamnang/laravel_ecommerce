@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Admin' => $baseDir . '/app/Model/Admin.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\Admin\\ActivityLogsController' => $baseDir . '/app/Http/Controllers/Admin/ActivityLogsController.php',
@@ -51,6 +52,7 @@ return array(
     'App\\Providers\\EventServiceProvider' => $baseDir . '/app/Providers/EventServiceProvider.php',
     'App\\Providers\\RouteServiceProvider' => $baseDir . '/app/Providers/RouteServiceProvider.php',
     'App\\User' => $baseDir . '/app/User.php',
+    'App\\Writer' => $baseDir . '/app/Model/Writer.php',
     'Appzcoder\\CrudGenerator\\Commands\\CrudApiCommand' => $vendorDir . '/appzcoder/crud-generator/src/Commands/CrudApiCommand.php',
     'Appzcoder\\CrudGenerator\\Commands\\CrudApiControllerCommand' => $vendorDir . '/appzcoder/crud-generator/src/Commands/CrudApiControllerCommand.php',
     'Appzcoder\\CrudGenerator\\Commands\\CrudCommand' => $vendorDir . '/appzcoder/crud-generator/src/Commands/CrudCommand.php',

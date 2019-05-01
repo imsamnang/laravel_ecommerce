@@ -2,23 +2,23 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
+use App\Model\Subadmin;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 
-class RegisterController extends Controller
+class SubadminRegisterController extends Controller
 {
   use RegistersUsers;
 
-  protected $redirectTo = '/home';  
+  protected $redirectTo = 'admin/home';
   // protected $redirectTo = '/dashboard';
 
   public function __construct()
   {
-    $this->middleware('guest');
+    $this->middleware('guest:admin,admin/home');
   }
 
   protected function validator(array $data)
@@ -34,7 +34,7 @@ class RegisterController extends Controller
 
   protected function create(array $data)
   {
-    return User::create([
+    return Subadmin::create([
       'username' => $data['username'],
       'firstname' => $data['firstname'],
       'lastname' => $data['lastname'],

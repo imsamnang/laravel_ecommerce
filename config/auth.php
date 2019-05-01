@@ -34,28 +34,25 @@ return [
     | Supported: "session", "token"
     |
     */
-
     'guards' => [
-        'web' => [
-            'driver' => 'session',
-            'provider' => 'users',
-        ],
-
-        'api' => [
-            'driver' => 'token',
-            'provider' => 'users',
-        ],
-
-        'admin' => [
-            'driver' => 'session',
-            'provider' => 'admins',
-        ],
-        
-        'writer' => [
-            'driver' => 'session',
-            'provider' => 'writers',
-        ],
+      'web' => [
+          'driver' => 'session',
+          'provider' => 'users',
+      ],
+      'subadmin' => [
+          'driver' => 'session',
+          'provider' => 'subadmins',
+      ],
+      'admin' => [
+          'driver' => 'session',
+          'provider' => 'admins',
+      ],
+      'api' => [
+          'driver' => 'token',
+          'provider' => 'users',
+      ],        
     ],
+
 
     /*
     |--------------------------------------------------------------------------
@@ -83,9 +80,9 @@ return [
             'driver' => 'eloquent',
             'model' => App\Model\Admin::class,
         ],
-        'writers' => [
+        'subadmins' => [
             'driver' => 'eloquent',
-            'model' => App\Model\Writer::class,
+            'model' => App\Model\Subadmin::class,
         ],        
         // 'users' => [
         //     'driver' => 'database',
@@ -113,6 +110,16 @@ return [
             'provider' => 'users',
             'table' => 'password_resets',
             'expire' => 60,
+        ],
+        'admins' => [
+            'provider' => 'admins',
+            'table' => 'password_resets',
+            'expire' => 30,
+        ],
+        'subadmins' => [
+            'provider' => 'subadmins',
+            'table' => 'password_resets',
+            'expire' => 30,
         ],
     ],
 

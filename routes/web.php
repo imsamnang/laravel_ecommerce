@@ -70,16 +70,19 @@ Route::resource('admin/activitylogs', 'Admin\\ActivityLogsController');
 	Route::view('profile','freeads.member_profile');
 
 //login mutiple table testing
-Route::get('/login/admin', 'Auth\LoginController@showAdminLoginForm');
-Route::get('/login/writer', 'Auth\LoginController@showWriterLoginForm');
-Route::get('/register/admin', 'Auth\RegisterController@showAdminRegisterForm');
-Route::get('/register/writer', 'Auth\RegisterController@showWriterRegisterForm');
-
-Route::post('/login/admin', 'Auth\LoginController@adminLogin');
-Route::post('/login/writer', 'Auth\LoginController@writerLogin');
-Route::post('/register/admin', 'Auth\RegisterController@createAdmin');
-Route::post('/register/writer', 'Auth\RegisterController@createWriter');
-
-Route::view('/home', 'home')->middleware('auth');
-Route::view('/admin', 'admin');
-Route::view('/writer', 'writer');
+Route::get('admin/login', 'Auth\AdminLoginController@showLoginForm');
+Route::post('admin/login', 'Auth\AdminLoginController@login')->name('admin.login');
+Route::get('subadmin/login', 'Auth\SubadminLoginController@showLoginForm');
+Route::post('subadmin/login', 'Auth\SubadminLoginController@login')->name('subadmin.login');
+Route::group(['prefix' => 'admin','middleware' => 'assign.guard:admin,admin/login'],function(){	
+	Route::get('home',function ()
+	{
+		return view('adminhome');
+	});
+});
+Route::group(['prefix' => 'subadmin','middleware' => 'assign.guard:subadmin,subadmin/login'],function(){
+	Route::get('home',function ()
+	{
+		return view('subadminhome');
+	});
+});
