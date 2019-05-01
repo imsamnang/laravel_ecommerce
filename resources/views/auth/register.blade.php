@@ -5,7 +5,11 @@
 @section('content')
 
   <div class="register-form">
-    <form method="POST" action="{{ route('register') }}">
+      @isset($url)
+      <form method="POST" action='{{ url("register/$url") }}' aria-label="{{ __('Register') }}">
+      @else
+      <form method="POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}">
+      @endisset
       {{ csrf_field() }}
       <h2 class="text-center">User Registration Form</h2>
       <div class="row">
