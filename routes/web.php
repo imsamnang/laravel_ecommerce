@@ -3,6 +3,10 @@
 Route::view('matrix','layouts.backend.matrix_admin');
 Route::view('khmer24','layouts.backend.khmer24_layout');
 
+// Plupload Route
+	Route::get('plupload','PluploadController@upload');
+	Route::post('plupload','PluploadController@store');
+
 Auth::routes();
 
 //for switching language route
@@ -60,7 +64,8 @@ Route::resource('admin/activitylogs', 'Admin\\ActivityLogsController');
 	Route::get('post/list_by_category','FreePostController@listProperties')->name('post.by_category');
 	Route::get('post/allproperties','FreePostController@allProperties')->name('post.allProperties');
 
-// Plupload Route
-	Route::get('plupload','PluploadController@upload');
-	Route::post('plupload','PluploadController@store');
+// Profile
+	Route::view('member','freeads.member_dashboard');
+	Route::view('vipmember','freeads.vipmember');
+	Route::view('profile','freeads.member_profile');
 

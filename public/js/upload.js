@@ -36,16 +36,13 @@
       $('#selector_'+id).fadeOut();
   }
   //Upload Files
-  function vpb_upload_previewed_files()
-  {
+  function vpb_upload_previewed_files(){
     // If no file is selected then do not proceed
     if(document.getElementById('vpb-data-file').value == "") 
     {
       $("#vpb-display-preview").fadeIn(2000).html('<div class="vpb_display_info" align="center">Please browse for some files to proceed.</div>'); 
       return false 
-    } 
-    else
-    {
+    } else {
       //Proceed now because a user has selected some files        
       var vpb_files = document.getElementById('vpb-data-file').files;             
       // Create a formdata object and append the files
