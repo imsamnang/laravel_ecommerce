@@ -22,9 +22,9 @@ class CreatePropertiesTable extends Migration
       $table->string('phone2')->nullable();
       $table->string('phone3')->nullable();
       $table->string('email')->nullable();
-      $table->string('province');
-      $table->string('district');
-      $table->string('commune');
+      $table->string('province_id');
+      $table->string('district_id');
+      $table->string('commune_id');
       $table->text('location')->nullable();
       $table->softDeletes();
       $table->timestamps();
