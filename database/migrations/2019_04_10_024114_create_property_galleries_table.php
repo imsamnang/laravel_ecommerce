@@ -12,7 +12,6 @@ class CreatePropertyGalleriesTable extends Migration
       $table->increments('id');
       $table->integer('property_id')->unsigned();
       $table->string('gallery_image')->nullable();
-      $table->softDeletes();
       $table->timestamps();
     });
   }
