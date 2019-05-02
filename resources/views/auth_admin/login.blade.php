@@ -5,13 +5,10 @@
 @section('content')
 
   <div class="login-form">
-    @isset($url)
-    <form method="POST" action='{{ url("login/$url") }}' aria-label="{{ __('Login') }}">
-    @else
-    <form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
-    @endisset    
+
+    <form method="POST" action="{{ route('admin.login.submit') }}" aria-label="{{ __('Login') }}">
       {{ csrf_field() }}
-      <h2 class="text-center">User Login</h2>        
+      <h2 class="text-center">Admin Login</h2>        
       {{-- username --}}
       <div class="form-group">
           <div class="input-group">

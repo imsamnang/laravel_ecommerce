@@ -10,6 +10,8 @@ class Subadmin extends Authenticatable
 {
   use Notifiable;
 
+  protected $guard = 'subadmin';
+
   protected $fillable = [
       'username','firstname','lastname', 'email', 'password',
   ];
