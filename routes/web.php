@@ -31,7 +31,7 @@
 	Route::resource('admin/activitylogs', 'Admin\\ActivityLogsController');
 	Route::get('admin/generator', ['uses' => 'Admin\\ProcessController@getGenerator']);
 	Route::post('admin/generator', ['uses' => 'Admin\\ProcessController@postGenerator']);
-	Route::get('/', 'Admin\AdminDashboardController@index');
+	Route::get('/', 'HomeController@index');
 	Route::get('/home', 'Admin\DashboardController@index')->name('home');
 	Route::get('/dashboard', 'Admin\DashboardController@index')->name('dashboard');
 	Route::resource('admin/category', 'Admin\\CategoryController');
@@ -70,10 +70,10 @@
 	Route::view('profile','freeads.member_profile');
 
 //login mutiple table testing
-	Route::get('admin/login', 'Auth\AdminLoginController@showLoginForm');
-	Route::post('admin/login', 'Auth\AdminLoginController@login')->name('admin.login');
-	Route::get('subadmin/login', 'Auth\SubadminLoginController@showLoginForm');
-	Route::post('subadmin/login', 'Auth\SubadminLoginController@login')->name('subadmin.login');
+	// Route::get('admin/login', 'Auth\AdminLoginController@showLoginForm');
+	// Route::post('admin/login', 'Auth\AdminLoginController@login')->name('admin.login');
+	// Route::get('subadmin/login', 'Auth\SubadminLoginController@showLoginForm');
+	// Route::post('subadmin/login', 'Auth\SubadminLoginController@login')->name('subadmin.login');
 
 	Route::get('/home', 'HomeController@index')->name('home');
 	Route::post('/user/logout', 'Auth\LoginController@userLogout')->name('user.logout');

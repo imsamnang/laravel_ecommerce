@@ -1,44 +1,48 @@
 <?php
+
 namespace App\Http\Controllers\AuthAdmin;
-use Illuminate\Http\Request;
+
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
+    use AuthenticatesUsers;
+
+    protected $redirectTo = 'admin';
+
     public function __construct()
     {
-      $this->middleware('guest:admin')->except(['logout']);
+       $this->middleware('guest:admin')->except(['logout']);
     }
-
+    public function redirectTo()
+    {
+        return 'admin';
+    }
+    protected function guard()
+    {
+        return \Auth::guard('admin');
+    }
     public function showLoginForm()
     {
-      return view('authAdmin.login');
-    }
-
-    public function login(Request $request)
-    {
-      $this->validate($request, [
-          'email' => 'required|email',
-          'password' => 'required|min:6'
-      ]);
-      $credential = [
-          'email' => $request->email,
-          'password' => $request->password
-      ];
-      
-      // Attempt to log the user in
-      if (Auth::guard('admin')->attempt($credential, $request->member)){
-          // If login succesful, then redirect to their intended location
-          return redirect()->intended(route('admin.home'));
-      }
-      // If Unsuccessful, then redirect back to the login with the form data
-      return redirect()->back()->withInput($request->only('email', 'remember'));
+        return view('auth_admin.login');
     }
 
     public function logout(Request $request)
     {
         Auth::guard('admin')->logout();
-        return redirect('/');
+        return redirect('admin');
     }
+
+    protected function credentials(Request $request)
+    {
+      if(is_numeric($request->get('email'))){
+        return ['phone'=>$request->get('email'),'password'=>$request->get('password')];
+      }
+      elseif (filter_var($request->get('email'), FILTER_VALIDATE_EMAIL)) {
+        return ['email' => $request->get('email'), 'password'=>$request->get('password')];
+      }
+      return ['username' => $request->get('email'), 'password'=>$request->get('password')];
+    }    
 }

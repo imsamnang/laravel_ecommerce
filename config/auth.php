@@ -40,18 +40,15 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
-        ],        
+        ],
         'admin' => [
             'driver' => 'session',
             'provider' => 'admins',
-        ],
-        'api-admin' => [
-            'driver' => 'token',
-            'provider' => 'admins',
-        ],
+        ],        
     ],
 
     /*
@@ -79,7 +76,8 @@ return [
         'admins' => [
             'driver' => 'eloquent',
             'model' => App\Model\Admin::class,
-        ],
+        ],        
+
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
@@ -110,7 +108,7 @@ return [
         'admins' => [
             'provider' => 'admins',
             'table' => 'password_resets',
-            'expire' => 30,
+            'expire' => 60,
         ],        
     ],
 
